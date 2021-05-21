@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: black;
 }
 
 .App-logo {
@@ -14,14 +15,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #ff7d71; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -35,4 +36,72 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Closet {
+  background-image: url("https://i.pinimg.com/originals/3e/f8/d3/3ef8d34d04c76a9164fabb2542cce7ea.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;;
+}
+
+.main-container {
+  position: relative;
+  width: 100%;
+}
+
+.closet {
+  width: 100%;
+}
+
+.outfit-maker {
+  position: relative;
+  /* bottom: 48rem; */
+  top: 12rem;
+  left: 8rem;
+}
+
+.clothing-item {
+  position: relative;
+  left: 3rem;
+  width: 80%;
+  /* bottom: 48rem; */
+}
+
+
+.top-left-btn {
+  height: 38%;
+  position: absolute;
+  top: 63%;
+  left: 23%;
+  transform: translate(-50%, -50%);
+}
+
+.top-right-btn {
+  height: 38%;
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btm-left-btn {
+  height: 0%;
+  position: absolute;
+  top: 63%;
+  left: 23%;
+  transform: translate(-50%, -50%);
+}
+
+.btm-right-btn {
+  height: 0%;
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profile-page {
+  display: inline-flex;
 }
