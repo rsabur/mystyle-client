@@ -16,7 +16,7 @@ const useStyles1 = makeStyles({
     root: {
         maxWidth: 345,
     },
-});
+})
 
 const useStyles2 = makeStyles((theme) => ({
     modal: {
@@ -30,7 +30,7 @@ const useStyles2 = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
-}));
+}))
 
 
 function ProfileCard({
@@ -42,42 +42,33 @@ function ProfileCard({
     password,
     image = "https://norrismgmt.com/wp-content/uploads/2020/05/24-248253_user-profile-default-image-png-clipart-png-download.png" }) {
 
-    
-    const classes1 = useStyles1();
-    const classes2 = useStyles2();
 
-    const [open, setOpen] = useState(false);
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
+    const classes1 = useStyles1()
+    const classes2 = useStyles2()
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => { setOpen(true) }
+    const handleClose = () => { setOpen(false) }
 
 
     return (
-
         <div className="profile-card">
             <Card className={classes1.root}>
-                {/* <CardActionArea> */}
                 <CardMedia
                     component="img"
                     alt={name}
-                    height="140"
+                    height="250"
                     image={image} />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">{name}</Typography>
                     <Typography variant="body2" color="textSecondary" component="p">Username: {username}</Typography>
                     <Typography variant="body2" color="textSecondary" component="p">Age: {age}</Typography>
                 </CardContent>
-                {/* </CardActionArea> */}
                 <CardActions>
                     <Button
                         size="small"
-                        variant="contained"
+                        variant="outlined"
                         color="primary"
-                        type="button" 
+                        type="button"
                         onClick={handleOpen}>
                         Edit
                     </Button>
@@ -89,12 +80,17 @@ function ProfileCard({
                         onClose={handleClose}
                         closeAfterTransition
                         BackdropComponent={Backdrop}
-                        BackdropProps={{timeout: 500,}}>
+                        BackdropProps={{ timeout: 500, }}>
                         <Fade in={open}>
                             <div className={classes2.paper}>
                                 <h2 id="transition-modal-title">Edit Profile</h2>
-                                <p id="transition-modal-description"><ProfileEditForm /></p>
-                            </div>
+                                    <ProfileEditForm id={id}
+                                        name={name}
+                                        username={username}
+                                        age={age}
+                                        gender={gender}
+                                        password={password}
+                                        image={image} /></div>
                         </Fade>
                     </Modal>
                     <Button

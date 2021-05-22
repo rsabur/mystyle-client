@@ -68,7 +68,9 @@
   width: 80%;
   /* bottom: 48rem; */
 }
-
+.profile-comp {
+margin-top: 2rem;
+}
 
 .top-left-btn {
   height: 38%;

@@ -1,13 +1,13 @@
 import './App.css';
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import LandingPage from './components/LandingPage';
 import ProfilePage from './components/ProfilePage';
-import NavBar from './components/Menu';
+import AppMenu from './components/AppMenu';
 import OutfitContainer from './components/OutfitContainer';
 import ClosetContainer from './components/ClosetContainer';
-import Logo from "./cover.png"
-import Logo2 from "./cover2.png"
+import Logo from "./cover.png";
+import Logo3 from "./cover3.png";
 
 function App() {
   const [clothings, setClothings] = useState([])
@@ -51,28 +51,31 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path='/'>
-          <img src={Logo} alt="logo" style={{ width: '100%', height: "30rem" }} />
+          <img src={Logo} alt="logo" style={{ width: '100%', height: "27rem" }} />
           <LandingPage />
         </Route>
         <Route exact path='/myprofile'>
-          <img src={Logo2} alt="logo" style={{ width: '100%', height: "12rem" }} />
-          <NavBar />
+          <img src={Logo3} alt="logo" style={{ width: '100%'}} />
+          <AppMenu />
+          <div className="profile-comp">
           <ProfilePage users={users} models={models} />
+          </div>
         </Route>
         <Route exact path='/myoutfits'>
-        <img src={Logo2} alt="logo" style={{width: '100%', height: "12rem"}} />
-          <NavBar />
-          <OutfitContainer />
+          <img src={Logo3} alt="logo" style={{ width: '100%' }} />
+          <AppMenu />
+          <OutfitContainer users={users} models={models} />
         </Route>
         <Route exact path='/mycloset'>
-          {/* <img src={Logo2} alt="logo" style={{ width: '100%', height: "10rem" }} /> */}
           <div className="Closet">
+          <img src={Logo3} alt="logo" style={{ width: '100%' }} />
+          <AppMenu />
             <ClosetContainer clothings={clothings} users={users} models={models} />
           </div>
         </Route>
       </Switch>
     </div>
-  );
+  )
 }
 
 export default App;

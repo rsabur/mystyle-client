@@ -1,6 +1,4 @@
 import { Form } from 'react-bootstrap';
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';

@@ -6,6 +6,7 @@ function OutfitMaker({ users, models }) {
     return (
         <div className="outfit-maker">
             <img src={model[0].image} alt={model[0].color} style={{height: "30rem"}} />
+            {/* <img src={model[0].image} alt={model[0].color} style={{height: "50rem"}} /> */}
         </div>
     )
 }

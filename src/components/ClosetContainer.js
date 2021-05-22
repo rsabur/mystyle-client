@@ -3,20 +3,17 @@ import OutfitMaker from './OutfitMaker';
 import Grid from '@material-ui/core/Grid';
 
 
+
 function ClosetContainer({ clothings, users, models }) {
     const clothingTop = clothings.filter(clothing => {
         return clothing.category === 'top'
     })
-    // console.log(clothingItem);
     const clothingBottom = clothings.filter(clothing => {
         return clothing.category === 'bottom'
     })
     const clothingDress = clothings.filter(clothing => {
         return clothing.category === 'dress'
     })
-
-    
-
 
     return (
         <div className="closet-container">

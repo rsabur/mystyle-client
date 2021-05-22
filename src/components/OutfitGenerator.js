@@ -1,6 +1,6 @@
 function OutfitGenerator() {
     return (
-        <h1>OutfitGenerator</h1>
+        <h3>Outfit Randomizer</h3>
     )
 }
 

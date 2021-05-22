@@ -3,9 +3,6 @@ import ModelMaker from './ModelMaker';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { SegmentInline } from 'semantic-ui-react';
 
 
 function ProfilePage({ users, models }) {
@@ -38,8 +35,10 @@ function ProfilePage({ users, models }) {
                 alignItems="center"
                 item
                 sm={6}>
+                <h3 className={classes.paper}>
+                    My Info:
+                </h3>
                 <Paper className={classes.paper}>
-                    My Info
                     {user[0]}
                 </Paper>
             </Grid>
@@ -51,8 +50,10 @@ function ProfilePage({ users, models }) {
                 alignItems="center"
                 item
                 sm={6}>
+                <h3 className={classes.paper}>
+                    Choose a Model:
+                </h3>
                 <Paper className={classes.paper}>
-                    Choose Your Model
                     {model}
                 </Paper>
             </Grid>
