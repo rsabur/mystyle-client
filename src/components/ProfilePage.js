@@ -21,6 +21,7 @@ function ProfilePage({ users, models }) {
     const model = models.map(model => <ModelMaker key={model.id} {...model} user={user} />)
 
     const classes = useStyles()
+    console.log(users);
 
     return (
         <div className="profile-page">
@@ -35,7 +36,7 @@ function ProfilePage({ users, models }) {
                     My Info:
                 </h3>
                 <Paper className={classes.paper}>
-                    {user[2]}
+                    {user[0]}
                 </Paper>
             </Grid>
             <Grid container

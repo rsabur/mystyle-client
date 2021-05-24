@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import SearchBar from './SearchBar'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
@@ -14,6 +14,7 @@ import Fade from '@material-ui/core/Fade'
 import Button from '@material-ui/core/Button'
 import DeleteIcon from '@material-ui/icons/Delete'
 import Card from '@material-ui/core/Card'
+import StarIcon from '@material-ui/icons/Star';
 
 
 
@@ -64,24 +65,25 @@ const useStyles2 = makeStyles((theme) => ({
 
 
 
-function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTerm, deleteClothing, onAddClothing }) {
+function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTerm, onDeleteClothing, onAddClothing }) {
     const classes1 = useStyles1()
     const classes2 = useStyles2()
     const history = useHistory()
     const [open, setOpen] = useState(false)
+    const [fav, setFav] = useState(false)
 
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
-    const handleDeleteDress = (id) => {
+    const handleFavClick = () => {
+        setFav(fav => !fav)
+    }
+    const handleDelete = (id) => {
         fetch(`http://localhost:3000/clothings/${id}`, {
             method: 'DELETE'
         })
-        deleteClothing(id)
+        onDeleteClothing(id)
         history.push('/mycloset')
-     }
-
-    let handleDeleteTop
-    let handleDeleteBottom
+    }
 
 
     return (
@@ -104,8 +106,11 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTer
                                     }}
                                     actionIcon={
                                         <IconButton aria-label={`star ${top.name}`}>
-                                            <StarBorderIcon className={classes1.title} />
-                                            <DeleteIcon size='small' onClick={handleDeleteTop} />
+                                            {fav ? 
+                                            <StarIcon className={classes1.title} onClick={handleFavClick} /> 
+                                            : 
+                                            <StarBorderIcon className={classes1.title} onClick={handleFavClick} />}
+                                            <DeleteIcon size='small' onClick={() => handleDelete(top.id)} />
                                         </IconButton>} />
                             </GridListTile>
                         ))}
@@ -124,15 +129,18 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTer
                                     }}
                                     actionIcon={
                                         <IconButton aria-label={`star ${bottom.name}`}>
-                                            <StarBorderIcon className={classes1.title} />
-                                            <DeleteIcon size='small' onClick={handleDeleteBottom} />
+                                            {fav ? 
+                                            <StarIcon className={classes1.title} onClick={handleFavClick} /> 
+                                            : 
+                                            <StarBorderIcon className={classes1.title} onClick={handleFavClick} />}
+                                            <DeleteIcon size='small' onClick={() => handleDelete(bottom.id)} />
                                         </IconButton>} />
                             </GridListTile>
                         ))}
                     </GridList>
                 </div>
                 <div className={classes1.root}>
-                <GridList className={classes1.gridList} cols={4}>
+                    <GridList className={classes1.gridList} cols={4}>
                         {clothingDress.map((dress) => (
                             <GridListTile key={dress.image}>
                                 <img src={dress.image} alt={dress.name} />
@@ -144,8 +152,11 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTer
                                     }}
                                     actionIcon={
                                         <IconButton aria-label={`star ${dress.name}`}>
-                                            <StarBorderIcon className={classes1.title} />
-                                            <DeleteIcon size='small' onClick={() => handleDeleteDress(dress.id)} />
+                                            {fav ? 
+                                            <StarIcon className={classes1.title} onClick={handleFavClick} /> 
+                                            : 
+                                            <StarBorderIcon className={classes1.title} onClick={handleFavClick} />}
+                                            <DeleteIcon size='small' onClick={() => handleDelete(dress.id)} />
                                         </IconButton>} />
                             </GridListTile>
                         ))}

@@ -57,7 +57,7 @@ function ProfileCard({
         fetch(`http://localhost:3000/users/${id}`, {
             method: 'DELETE'
         })
-        history.push('/myprofile')
+        history.push('/')
     }
 
     return (

@@ -9,7 +9,7 @@ function OutfitContainer({ users, models, clothings }) {
 
     const [isLoaded, setIsLoaded] = useState(false)
     const [outfits, setOutfits] = useState([])
-    const [outfitClothings, setOutfitClothings] = useState([])
+    // const [outfitClothings, setOutfitClothings] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:3000/outfits')
@@ -19,26 +19,28 @@ function OutfitContainer({ users, models, clothings }) {
                 setIsLoaded(true)
             })
     }, [])
-    useEffect(() => {
-        fetch('http://localhost:3000/outfit_clothings')
-            .then(r => r.json())
-            .then(outfitClothArr => {
-                setOutfitClothings(outfitClothArr)
-                setIsLoaded(true)
-            })
-    }, [])
 
     if (!isLoaded) return <h2>Loading...</h2>
 
+    const handleDeleteOutfit = (outfitId) => {
+        const minusOutfit = outfits.filter(outfit => outfit.id !== outfitId)
+        setOutfits(minusOutfit)
+      }
+      
+    const outfit = outfits.map(outfit => {
+        return <Outfits {...outfit} items={outfit.clothings} onDeleteOutfit={handleDeleteOutfit} />
+    })
+
+
     return (
         <div className="outfit-container">
-            <Grid container spacing={2}>
-                <Grid item xs={6}>
+            <Grid container justify="center" spacing={2}>
+                <Grid item xs={4}>
                     <OutfitGenerator />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={4}>
                     <h3>My Outfits</h3>
-                   <Outfits outfits={outfits} clothings={clothings} outfitClothings={outfitClothings} /> 
+                   {outfit}
                 </Grid>
             </Grid>
         </div>

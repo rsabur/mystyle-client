@@ -87,7 +87,7 @@ function App() {
           <div className="Closet">
             <img src={Logo3} alt="logo" style={{ width: '100%' }} />
             <AppMenu />
-            <ClosetContainer onAddClothing={handleAddClothing} deleteClothing={deleteClothing} clothings={filteredClothings} users={users} models={models} setSearchTerm={setSearchTerm} />
+            <ClosetContainer onAddClothing={handleAddClothing} onDeleteClothing={deleteClothing} clothings={filteredClothings} users={users} models={models} setSearchTerm={setSearchTerm} />
           </div>
         </Route>
       </Switch>

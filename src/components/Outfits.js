@@ -12,7 +12,8 @@ import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop'
 import Fade from '@material-ui/core/Fade'
 import { useState } from 'react'
-// import { useHistory } from 'react-router-dom'
+import OutfitEditForm from './OutfitEditForm'
+import { useHistory } from 'react-router'
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {
@@ -46,29 +47,42 @@ const useStyles2 = makeStyles((theme) => ({
     },
 }))
 
-function Outfits() {
+function Outfits({ name, id, items, onDeleteOutfit }) {
     // const classes = useStyles()
     // const history = useHistory()
     const classes1 = useStyles1()
     const classes2 = useStyles2()
+    const history = useHistory()
     const [open, setOpen] = useState(false)
-    
+
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
-    
+
+    const outfitImages = items.map(item => item.image)
+    console.log(outfitImages)
+    const itemName = items.map(item => item.name)
+
+    const handleDeleteOutfit = () => {
+        fetch(`http://localhost:3000/outfits/${id}`, {
+            method: 'DELETE'
+        })
+        onDeleteOutfit(id)
+        history.push('/myoutfits')
+    }
 
     return (
-        
-                <Card className={classes1.root}>
+        <>
+            <Card className={classes1.root}>
                 <CardMedia
                     component="img"
-                    alt=''
+                    alt={name}
                     height="250"
-                    // image={image} 
-                    />
+                    width="74%"
+                    image={outfitImages}
+                />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2"></Typography>
-                    {/* <Typography variant="body2" color="textSecondary" component="p">Username: {username}</Typography> */}
+                    <Typography gutterBottom variant="h5" component="h2">{name}</Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">Clothing Name: {itemName}</Typography>
                     {/* <Typography variant="body2" color="textSecondary" component="p">Age: {age}</Typography> */}
                 </CardContent>
                 <CardActions>
@@ -92,18 +106,12 @@ function Outfits() {
                         <Fade in={open}>
                             <div className={classes2.paper}>
                                 <h2 id="transition-modal-title">Edit Profile</h2>
-                                    {/* <ProfileEditForm id={id}
-                                        name={name}
-                                        username={username}
-                                        age={age}
-                                        gender={gender}
-                                        password={password}
-                                        image={image} /> */}
-                                        </div>
+                                <OutfitEditForm />
+                            </div>
                         </Fade>
                     </Modal>
-                    <Button 
-                    // onClick={handleDeleteProfile}
+                    <Button
+                        onClick={handleDeleteOutfit}
                         size="small"
                         variant="contained"
                         color="secondary"
@@ -113,6 +121,7 @@ function Outfits() {
                   </Button>
                 </CardActions>
             </Card>
+        </>
     )
 }
 

@@ -1,7 +1,7 @@
-import ClothingItem from './ClothingItem';
-import OutfitMaker from './OutfitMaker';
-import Grid from '@material-ui/core/Grid';
-
+import ClothingItem from './ClothingItem'
+import OutfitMaker from './OutfitMaker'
+import Grid from '@material-ui/core/Grid'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
 
 
 function ClosetContainer({ clothings, users, models, setSearchTerm, deleteClothing, onAddClothing }) {
@@ -15,11 +15,18 @@ function ClosetContainer({ clothings, users, models, setSearchTerm, deleteClothi
         return clothing.category === 'dress'
     })
 
+    const handleCreateOutfit = () => {
+        console.log('clicked')
+    }
+
     return (
         <div className="closet-container">
             <Grid container spacing={2}>
                 <Grid item xs={6}>
                     <OutfitMaker users={users} models={models} />
+                    <AddCircleIcon fontSize='large' 
+                    style={{ color: '#A48128', border: '5px solid grey', borderRadius:'50%', marginInlineStart: '-300px' }} 
+                    onClick={handleCreateOutfit} />
                 </Grid>
                 <Grid item xs={6}>
                     <ClothingItem onAddClothing={onAddClothing} deleteClothing={deleteClothing} clothingTop={clothingTop} clothingBottom={clothingBottom} clothingDress={clothingDress} setSearchTerm={setSearchTerm} />
@@ -29,4 +36,4 @@ function ClosetContainer({ clothings, users, models, setSearchTerm, deleteClothi
     )
 }
 
-export default ClosetContainer;
+export default ClosetContainer

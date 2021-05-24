@@ -107,3 +107,9 @@ margin-top: 2rem;
 .profile-page {
   display: inline-flex;
 }
+
+.makeStyles-root-1 {
+  /* max-width: 345px; */
+  margin-bottom: 1rem;
+  /* margin-left: 7rem; */
+}

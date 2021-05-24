@@ -4,10 +4,6 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { useHistory } from "react-router-dom"
 import { useState } from 'react'
-import IconButton from '@material-ui/core/IconButton'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,14 +18,13 @@ const useStyles = makeStyles((theme) => ({
 function ProfileEditForm() {
     const classes = useStyles()
     const [setUser] = useState([])
-    const [model_id] = useState('')
+    const [model_id, setModel_id] = useState('1')
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
     const [age, setAge] = useState('')
     const [image, setImage] = useState('')
     const [password, setPassword] = useState('')
     const [gender, setGender] = useState('f')
-    const [showPassword, setShowPassword] = useState(false)
 
     const genderOptions = [
         { value: 'f', label: 'Female' },
@@ -39,9 +34,6 @@ function ProfileEditForm() {
 
     const history = useHistory()
     const handleGenderChange = (e) => { setGender(e.target.value) }
-
-    const handleClickShowPassword = () => { setShowPassword(showPassword => !showPassword) }
-    const handleMouseDownPassword = (e) => { e.preventDefault() }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -63,11 +55,18 @@ function ProfileEditForm() {
             },
             body: JSON.stringify(formData)
         })
-        .then(r => r.json())
-        .then(updatedUser => {
-            setUser(updatedUser)
-            history.push('/myprofile')
-        })
+            .then(r => r.json())
+            .then(updatedUser => {
+                setUser(updatedUser)
+                history.push('/myprofile')
+                setName('')
+                setUsername('')
+                setAge('')
+                setGender('f')
+                setPassword('')
+                setImage('')
+                setModel_id('1')
+            })
     }
 
     return (
@@ -115,19 +114,10 @@ function ProfileEditForm() {
                     <TextField id="password-input"
                         label="Password"
                         placeholder='Password'
-                        type={showPassword ? 'text' : 'password'}
+                        type='password'
                         name='password'
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        endadornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}>
-                                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                                </IconButton>
-                            </InputAdornment>}>
+                        onChange={(e) => setPassword(e.target.value)}>
                     </TextField>
                 </div>
                 <div>

@@ -14,13 +14,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-function ClothingForm({onAddClothing}) {
+function ClothingForm({ onAddClothing }) {
     const classes = useStyles()
     const [size, setSize] = useState('s')
     const [image, setImage] = useState('')
     const [name, setName] = useState('')
     const [category, setCategory] = useState('top')
     const [clothing, setClothing] = useState([])
+    const [gender, setGender] = useState('f')
 
     const categoryOptions = [
         { value: 'top', label: 'Top' },
@@ -32,10 +33,16 @@ function ClothingForm({onAddClothing}) {
         { value: 'm', label: 'Medium' },
         { value: 'l', label: 'Large' }
     ]
+    const genderOptions = [
+        { value: 'f', label: 'Female' },
+        { value: 'm', label: 'Male' },
+        { value: 'nb', label: 'Non-Binary' }
+    ]
 
     const history = useHistory()
     const handleCatChange = (e) => { setCategory(e.target.value) }
     const handleSizeChange = (e) => { setSize(e.target.value) }
+    const handleGenderChange = (e) => { setGender(e.target.value) }
     const addClothing = (newClothing) => {
         const newClothingArr = [newClothing, ...clothing]
         setClothing(newClothingArr)
@@ -43,31 +50,34 @@ function ClothingForm({onAddClothing}) {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-            const formData = {
-                name,
-                image,
-                size,
-                category
-            }
+        const formData = {
+            name,
+            image,
+            gender,
+            size,
+            category
+        }
 
-            fetch('http://localhost:3000/clothings', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formData)
+        fetch('http://localhost:3000/clothings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(r => r.json())
+            .then(clothing => {
+                addClothing(clothing)
+                onAddClothing(clothing)
+                history.push('/mycloset')
+                setName('')
+                setGender('')
+                setSize('')
+                setImage('')
+                setSize('s')
+                setCategory('top')
             })
-                .then(r => r.json())
-                .then(clothing => {
-                    addClothing(clothing)
-                    onAddClothing(clothing)
-                    history.push('/mycloset')
-                    setSize('')
-                    setImage('')
-                    setSize('s')
-                    setCategory('top')
-                })
     }
 
 
@@ -118,6 +128,22 @@ function ClothingForm({onAddClothing}) {
                         helperText="Please select a category."
                         variant="outlined">
                         {categoryOptions.map((option) => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </TextField>
+                </div>
+                <div>
+                    <TextField id="gender"
+                        label="Gender"
+                        select
+                        value={gender}
+                        onChange={handleGenderChange}
+                        SelectProps={{ native: true, }}
+                        helperText="Please select a gender."
+                        variant="outlined">
+                        {genderOptions.map((option) => (
                             <option key={option.value} value={option.value}>
                                 {option.label}
                             </option>

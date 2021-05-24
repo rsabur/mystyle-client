@@ -7,10 +7,6 @@ import Fade from '@material-ui/core/Fade'
 import Button from '@material-ui/core/Button'
 import { Form, Checkbox } from 'semantic-ui-react'
 import TextField from '@material-ui/core/TextField'
-import IconButton from '@material-ui/core/IconButton'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import Visibility from '@material-ui/icons/Visibility'
-import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,8 +40,6 @@ function LoginSignup() {
     const [openLogin, setOpenLogin] = useState(false)
     const [openSignup, setOpenSignup] = useState(false)
 
-    const [showPassword, setShowPassword] = useState(false)
-
     const [user, setUser] = useState([])
     const [model_id] = useState('')
     const [name, setName] = useState('')
@@ -69,8 +63,6 @@ function LoginSignup() {
     ]
 
     const handleGenderChange = (e) => { setGender(e.target.value) }
-    const handleClickShowPassword = () => { setShowPassword(showPassword => !showPassword) }
-    const handleMouseDownPassword = (e) => { e.preventDefault() }
 
     const addUser = (newUser) => {
         const newUserArr = [newUser, ...user]
@@ -206,19 +198,10 @@ function LoginSignup() {
                                 <TextField id="password-input"
                                     label="Password"
                                     placeholder='Password'
-                                    type={showPassword ? 'text' : 'password'}
+                                    type='password'
                                     name='password'
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    endadornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}>
-                                                {showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>}>
+                                    onChange={(e) => setPassword(e.target.value)}>
                                 </TextField>
                             </div>
                             <div>
