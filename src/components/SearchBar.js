@@ -1,7 +1,9 @@
-import { Form } from 'react-bootstrap';
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { Form } from 'react-bootstrap'
+import SearchIcon from '@material-ui/icons/Search'
+import InputBase from '@material-ui/core/InputBase'
+import { fade, makeStyles } from '@material-ui/core/styles'
+import { useState } from 'react'
+
 
 const useStyles = makeStyles((theme) => ({
     search: {
@@ -43,10 +45,17 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function SearchBar() {
-    const classes = useStyles();
+
+function SearchBar({ setSearchTerm }) {
+    const classes = useStyles()
+    const [search, setSearch] = useState('')
+
+    function handleSubmit() {
+        console.log("Submitted")
+        setSearch(setSearchTerm)
+    }
     return (
-        <Form inline>
+        <Form inline onChange={handleSubmit}>
             <div className={classes.search}>
                 <div className={classes.searchIcon}>
                     <SearchIcon />
@@ -57,6 +66,7 @@ function SearchBar() {
                         root: classes.inputRoot,
                         input: classes.inputInput,
                     }}
+                    value={search}
                     inputProps={{ 'aria-label': 'search' }}
                 />
             </div>
@@ -64,4 +74,4 @@ function SearchBar() {
     )
 }
 
-export default SearchBar;
+export default SearchBar

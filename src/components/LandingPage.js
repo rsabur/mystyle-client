@@ -1,10 +1,10 @@
 import LoginSignup from './LoginSignup'
 
-function LandingPage() {
+function LandingPage({models}) {
     return (
         <div className="landing-page">
             <h1 style={{fontFamily: 'Serif'}} ><i>Welcome to Your Personal Virtual Fitting Room!</i></h1>
-            <LoginSignup />
+            <LoginSignup models={models} />
         </div>
     )
 }

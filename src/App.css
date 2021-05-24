@@ -43,7 +43,7 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;;
+  background-size: cover;
 }
 
 .main-container {
@@ -58,7 +58,7 @@
 .outfit-maker {
   position: relative;
   /* bottom: 48rem; */
-  top: 12rem;
+  top: 6rem;
   left: 8rem;
 }
 

@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 
 
-function ClosetContainer({ clothings, users, models }) {
+function ClosetContainer({ clothings, users, models, setSearchTerm, deleteClothing, onAddClothing }) {
     const clothingTop = clothings.filter(clothing => {
         return clothing.category === 'top'
     })
@@ -22,7 +22,7 @@ function ClosetContainer({ clothings, users, models }) {
                     <OutfitMaker users={users} models={models} />
                 </Grid>
                 <Grid item xs={6}>
-                    <ClothingItem clothingTop={clothingTop} clothingBottom={clothingBottom} clothingDress={clothingDress} />
+                    <ClothingItem onAddClothing={onAddClothing} deleteClothing={deleteClothing} clothingTop={clothingTop} clothingBottom={clothingBottom} clothingDress={clothingDress} setSearchTerm={setSearchTerm} />
                 </Grid>
             </Grid>
         </div>

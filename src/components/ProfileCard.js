@@ -1,16 +1,17 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import DeleteIcon from '@material-ui/icons/Delete'
+import Modal from '@material-ui/core/Modal'
+import Backdrop from '@material-ui/core/Backdrop'
+import Fade from '@material-ui/core/Fade'
 import { useState } from 'react'
-import ProfileEditForm from './ProfileEditForm';
+import { useHistory } from 'react-router-dom'
+import ProfileEditForm from './ProfileEditForm'
 
 const useStyles1 = makeStyles({
     root: {
@@ -46,9 +47,18 @@ function ProfileCard({
     const classes1 = useStyles1()
     const classes2 = useStyles2()
     const [open, setOpen] = useState(false)
+
+    const history = useHistory()
+    
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
 
+    const handleDeleteProfile = () => {
+        fetch(`http://localhost:3000/users/${id}`, {
+            method: 'DELETE'
+        })
+        history.push('/myprofile')
+    }
 
     return (
         <div className="profile-card">
@@ -93,7 +103,7 @@ function ProfileCard({
                                         image={image} /></div>
                         </Fade>
                     </Modal>
-                    <Button
+                    <Button onClick={handleDeleteProfile}
                         size="small"
                         variant="contained"
                         color="secondary"
@@ -107,4 +117,4 @@ function ProfileCard({
     )
 }
 
-export default ProfileCard;
+export default ProfileCard

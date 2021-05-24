@@ -1,34 +1,30 @@
-import ProfileCard from './ProfileCard';
-import ModelMaker from './ModelMaker';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import ProfileCard from './ProfileCard'
+import ModelMaker from './ModelMaker'
+import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    paper: {
+        display: 'inline-flex',
+        padding: theme.spacing(6),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+}))
 
 function ProfilePage({ users, models }) {
-
     const user = users.map(user => <ProfileCard key={user.id} {...user} />)
     const model = models.map(model => <ModelMaker key={model.id} {...model} user={user} />)
-    console.log(model.props);
-
-    const useStyles = makeStyles((theme) => ({
-        root: {
-            flexGrow: 1,
-        },
-        paper: {
-            display: 'inline-flex',
-            padding: theme.spacing(6),
-            textAlign: 'center',
-            color: theme.palette.text.secondary,
-        },
-    }));
 
     const classes = useStyles()
 
     return (
         <div className="profile-page">
-            <Grid
-                container
+            <Grid container
                 spacing={3}
                 direction="row"
                 justify="center"
@@ -39,11 +35,10 @@ function ProfilePage({ users, models }) {
                     My Info:
                 </h3>
                 <Paper className={classes.paper}>
-                    {user[0]}
+                    {user[2]}
                 </Paper>
             </Grid>
-            <Grid
-                container
+            <Grid container
                 spacing={3}
                 direction="row"
                 justify="center"
@@ -61,4 +56,4 @@ function ProfilePage({ users, models }) {
     )
 }
 
-export default ProfilePage;
+export default ProfilePage

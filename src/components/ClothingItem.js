@@ -1,17 +1,19 @@
-import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import IconButton from '@material-ui/core/IconButton';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import SearchBar from './SearchBar'
-import ClothingForm from './ClothingForm';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card'
 import { useState } from 'react'
+import SearchBar from './SearchBar'
+import {useHistory} from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+import GridList from '@material-ui/core/GridList'
+import GridListTile from '@material-ui/core/GridListTile'
+import GridListTileBar from '@material-ui/core/GridListTileBar'
+import IconButton from '@material-ui/core/IconButton'
+import StarBorderIcon from '@material-ui/icons/StarBorder'
+import ClothingForm from './ClothingForm'
+import Modal from '@material-ui/core/Modal'
+import Backdrop from '@material-ui/core/Backdrop'
+import Fade from '@material-ui/core/Fade'
+import Button from '@material-ui/core/Button'
+import DeleteIcon from '@material-ui/icons/Delete'
+import Card from '@material-ui/core/Card'
 
 
 
@@ -22,7 +24,7 @@ const useStyles1 = makeStyles((theme) => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
         // backgroundColor: "#CFB9AD",
-        marginTop: "1rem",
+        // marginTop: "1rem",
     },
 
     root2: {
@@ -37,13 +39,14 @@ const useStyles1 = makeStyles((theme) => ({
         transform: 'translateZ(0)',
     },
     title: {
+        // fontSize: '15px',
         color: '#A48128',
     },
     titleBar: {
         background:
             'linear-gradient(to top, rgba(81, 24, 47,0.6) 0%, rgba(81, 24, 47,0.2) 70%, rgba(0,0,0,0) 100%)',
     },
-}));
+}))
 
 const useStyles2 = makeStyles((theme) => ({
     modal: {
@@ -57,28 +60,36 @@ const useStyles2 = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
-}));
+}))
 
 
 
-function ClothingItem({ clothingTop, clothingDress, clothingBottom }) {
+function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTerm, deleteClothing, onAddClothing }) {
     const classes1 = useStyles1()
     const classes2 = useStyles2()
+    const history = useHistory()
     const [open, setOpen] = useState(false)
 
-    const handleOpen = () => {
-        setOpen(true);
-    }
-    const handleClose = () => {
-        setOpen(false);
-    }
+    const handleOpen = () => { setOpen(true) }
+    const handleClose = () => { setOpen(false) }
+    const handleDeleteDress = (id) => {
+        fetch(`http://localhost:3000/clothings/${id}`, {
+            method: 'DELETE'
+        })
+        deleteClothing(id)
+        history.push('/mycloset')
+     }
+
+    let handleDeleteTop
+    let handleDeleteBottom
+
 
     return (
         <div className="clothing-item">
             <Card className={classes1.root2} variant="outlined">
                 <div className="search">
                     <br />
-                    <SearchBar />
+                    <SearchBar setSearchTerm={setSearchTerm} />
                 </div>
                 <div className={classes1.root}>
                     <GridList className={classes1.gridList} cols={4}>
@@ -94,6 +105,7 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom }) {
                                     actionIcon={
                                         <IconButton aria-label={`star ${top.name}`}>
                                             <StarBorderIcon className={classes1.title} />
+                                            <DeleteIcon size='small' onClick={handleDeleteTop} />
                                         </IconButton>} />
                             </GridListTile>
                         ))}
@@ -113,13 +125,14 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom }) {
                                     actionIcon={
                                         <IconButton aria-label={`star ${bottom.name}`}>
                                             <StarBorderIcon className={classes1.title} />
+                                            <DeleteIcon size='small' onClick={handleDeleteBottom} />
                                         </IconButton>} />
                             </GridListTile>
                         ))}
                     </GridList>
                 </div>
                 <div className={classes1.root}>
-                    <GridList className={classes1.gridList} cols={4}>
+                <GridList className={classes1.gridList} cols={4}>
                         {clothingDress.map((dress) => (
                             <GridListTile key={dress.image}>
                                 <img src={dress.image} alt={dress.name} />
@@ -132,6 +145,7 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom }) {
                                     actionIcon={
                                         <IconButton aria-label={`star ${dress.name}`}>
                                             <StarBorderIcon className={classes1.title} />
+                                            <DeleteIcon size='small' onClick={() => handleDeleteDress(dress.id)} />
                                         </IconButton>} />
                             </GridListTile>
                         ))}
@@ -156,7 +170,7 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom }) {
                     <Fade in={open}>
                         <div className={classes2.paper}>
                             <h2 id="transition-modal-title">Add More Clothing</h2>
-                            <p id="transition-modal-description"><ClothingForm /></p>
+                            <ClothingForm onAddClothing={onAddClothing} />
                         </div>
                     </Fade>
                 </Modal>

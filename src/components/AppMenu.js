@@ -16,7 +16,7 @@ function AppMenu() {
   }
   return (
     <div className="menu">
-      <img src={MenuPic} alt="logo" style={{ width: '4%', borderRadius: '50%', margin: '0.7rem 0 0px -65rem' }} onClick={handleClick} />
+      <img src={MenuPic}  alt="logo" style={{ width: '4%', borderRadius: '50%', margin: '0.7rem 0 0px -65rem' }} onClick={handleClick} />
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
