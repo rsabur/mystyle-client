@@ -16,15 +16,15 @@ const useStyles = makeStyles((theme) => ({
 
 
 function ProfileEditForm( {userId,
+    onClose,
     userName,
     userUsername,
     userAge,
     userGender,
     userPassword,
     userImage,
-    onUpdatedUser} ) {
+    setUsers} ) {
     const classes = useStyles()
-    const [setUser] = useState([])
     const [model_id] = useState('1')
     const [name, setName] = useState(userName)
     const [username, setUsername] = useState(userUsername)
@@ -32,7 +32,7 @@ function ProfileEditForm( {userId,
     const [image, setImage] = useState(userImage)
     const [password, setPassword] = useState(userPassword)
     const [gender, setGender] = useState(userGender)
-
+    
     const genderOptions = [
         { value: 'f', label: 'Female' },
         { value: 'm', label: 'Male' },
@@ -64,9 +64,7 @@ function ProfileEditForm( {userId,
         })
             .then(r => r.json())
             .then(updatedUserObj => {
-                setUser(updatedUserObj)
-                console.log(updatedUserObj)
-                onUpdatedUser(updatedUserObj)
+                setUsers(updatedUserObj)
                 history.push('/myprofile')
             })
     }
@@ -75,8 +73,6 @@ function ProfileEditForm( {userId,
         <div className="edit-profile-form">
             <Form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit} >
                 <div>
-                    {/* <TextField id="model_id" type="number" label="model-id" /> */}
-                    {/* <input type='hidden' id='model_id' name='model_id' value='1' /> */}
                     <TextField id="name"
                         label="Name"
                         placeholder='Name'
@@ -142,7 +138,8 @@ function ProfileEditForm( {userId,
                     size="small"
                     variant="contained"
                     color="primary"
-                    type='submit'>
+                    type='submit'
+                    onClick={onClose}>
                     Done
                 </Button>
             </Form>

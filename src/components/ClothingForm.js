@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-function ClothingForm({ onAddClothing }) {
+function ClothingForm({ onAddClothing, onClose }) {
     const classes = useStyles()
     const [size, setSize] = useState('s')
     const [image, setImage] = useState('')
     const [name, setName] = useState('')
     const [category, setCategory] = useState('top')
-    const [clothing, setClothing] = useState([])
+    // const [clothing, setClothing] = useState([])
     const [gender, setGender] = useState('f')
 
     const categoryOptions = [
@@ -43,10 +43,11 @@ function ClothingForm({ onAddClothing }) {
     const handleCatChange = (e) => { setCategory(e.target.value) }
     const handleSizeChange = (e) => { setSize(e.target.value) }
     const handleGenderChange = (e) => { setGender(e.target.value) }
-    const addClothing = (newClothing) => {
-        const newClothingArr = [newClothing, ...clothing]
-        setClothing(newClothingArr)
-    }
+    
+    // const addClothing = (newClothing) => {
+    //     const newClothingArr = [newClothing, ...clothing]
+    //     setClothing(newClothingArr)
+    // }
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -68,7 +69,7 @@ function ClothingForm({ onAddClothing }) {
         })
             .then(r => r.json())
             .then(clothing => {
-                addClothing(clothing)
+                // addClothing(clothing)
                 onAddClothing(clothing)
                 history.push('/mycloset')
                 setName('')
@@ -153,7 +154,8 @@ function ClothingForm({ onAddClothing }) {
                 <Button
                     size="small"
                     variant="contained"
-                    type='submit'>Add</Button>
+                    type='submit'
+                    onClick={onClose} >Add</Button>
             </Form>
         </div>
     )

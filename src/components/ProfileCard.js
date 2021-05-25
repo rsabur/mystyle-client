@@ -34,7 +34,7 @@ const useStyles2 = makeStyles((theme) => ({
 }))
 
 
-function ProfileCard({ user, onUpdatedUser }) {
+function ProfileCard({ user, setUsers }) {
     const classes1 = useStyles1()
     const classes2 = useStyles2()
     const history = useHistory()
@@ -59,9 +59,12 @@ function ProfileCard({ user, onUpdatedUser }) {
                     height="250"
                     image={user.image} />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">{user.name}</Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">Username: {user.username}</Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">Age: {user.age}</Typography>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {user.name}</Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Username: {user.username}</Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Age: {user.age}</Typography>
                 </CardContent>
                 <CardActions>
                     <Button
@@ -91,7 +94,8 @@ function ProfileCard({ user, onUpdatedUser }) {
                                     userGender={user.gender}
                                     userPassword={user.password}
                                     userImage={user.image}
-                                    onUpdatedUser={onUpdatedUser} /></div>
+                                    onClose={handleClose}
+                                    setUsers={setUsers} /></div>
                         </Fade>
                     </Modal>
                     <Button onClick={handleDeleteProfile}

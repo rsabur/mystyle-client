@@ -39,17 +39,18 @@
 }
 
 .Closet {
-  background-image: url("https://i.pinimg.com/originals/3e/f8/d3/3ef8d34d04c76a9164fabb2542cce7ea.jpg");
+  background-image: url("https://i.imgur.com/RZZp1Ky.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  height: 60rem;
 }
 
-.main-container {
+/* .main-container {
   position: relative;
   width: 100%;
-}
+} */
 
 .closet {
   width: 100%;
@@ -66,10 +67,9 @@
   position: relative;
   left: 3rem;
   width: 80%;
-  /* bottom: 48rem; */
 }
 .profile-comp {
-margin-top: 2rem;
+/* margin-top: 2rem; */
 }
 
 .position-blue-top {
@@ -149,11 +149,10 @@ margin-top: 2rem;
 }
 
 .makeStyles-root-1 {
-  /* max-width: 345px; */
   margin-bottom: 1rem;
-  /* margin-left: 7rem; */
 }
 
-.MuiButton-contained {
-  margin: 3px;
+.outfit-cards {
+  display: inline-flex;
+  /* height: 20rem; */
 }

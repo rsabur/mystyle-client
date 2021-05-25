@@ -10,15 +10,17 @@ import Logo from "./cover.png"
 import Logo3 from "./cover3.png"
 
 function App() {
-  const [clothings, setClothings] = useState([])
   const [users, setUsers] = useState([])
   const [models, setModels] = useState([])
   const [outfits, setOutfits] = useState([])
+  const [clothings, setClothings] = useState([])
+  const [searchTerm, setSearchTerm] = useState("")
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [isOutfitClothingsLoaded, setIsOutfitClothingsLoaded] = useState(false)
   const [isUsersLoaded, setIsUsersLoaded] = useState(false)
+  const [outfitClothings, setOutfitClothings] = useState([])
   const [isModelsLoaded, setIsModelsLoaded] = useState(false)
   const [isClothingsLoaded, setIsClothingsLoaded] = useState(false)
-  const [searchTerm, setSearchTerm] = useState("")
-
 
   useEffect(() => {
     fetch('http://127.0.0.1:3000/clothings')
@@ -34,11 +36,9 @@ function App() {
       .then(r => r.json())
       .then(user => {
         setUsers(user)
-        setOutfits(user.outfits)
         setIsUsersLoaded(true)
       })
   }, [])
-  // console.log(outfits, users)
 
   useEffect(() => {
     fetch('http://127.0.0.1:3000/models')
@@ -49,6 +49,26 @@ function App() {
       })
   }, [])
 
+  useEffect(() => {
+    fetch('http://localhost:3000/outfits')
+      .then(r => r.json())
+      .then(outfitArr => {
+        setOutfits(outfitArr)
+        setIsLoaded(true)
+      })
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/outfit_clothings')
+      .then(r => r.json())
+      .then(outfitClothingsArr => {
+        setOutfitClothings(outfitClothingsArr)
+        setIsOutfitClothingsLoaded(true)
+      })
+  }, [])
+
+  if (!isLoaded) return <h2>Loading...</h2>
+  if (!isOutfitClothingsLoaded) return <h2>Loading...</h2>
   if (!isUsersLoaded) return <h2>Loading...</h2>
   if (!isModelsLoaded) return <h2>Loading...</h2>
   if (!isClothingsLoaded) return <h2>Loading...</h2>
@@ -57,18 +77,36 @@ function App() {
     return clothing.name.toLowerCase().includes(searchTerm.toLowerCase())
   })
 
+  const handleAddClothing = (newClothing) => {
+    const newClothingArr = [newClothing, ...clothings]
+    setClothings(newClothingArr)
+  }
+  
+  const handleAddOutfit = (newOutfit) => {
+    const newOutfitsArr = [newOutfit, ...outfits]
+    setOutfits(newOutfitsArr)
+  }
+  
+  const handleAddOutfitClothing = (newOutfitClothing) => {
+    const newOutfitClothingsArr = [newOutfitClothing, ...outfitClothings]
+    setOutfitClothings(newOutfitClothingsArr)
+  }
+  
   const deleteClothing = (clothingId) => {
     const minusClothing = clothings.filter(clothing => clothing.id !== clothingId)
     setClothings(minusClothing)
   }
 
-  const handleAddClothing = (newClothing) => {
-    const newClothingArr = [newClothing, ...clothings];
-    setClothings(newClothingArr);
-  }
-
-  const handleUpdatedUser = (updatedUser) => {
-    setUsers(updatedUser) 
+  const handleEditOutfit = (editedOutfit) => {
+    const updateOutfit = outfits.map(outfit => {
+      if (outfit.id === editedOutfit.id) {
+        return editedOutfit
+      } else {
+        return outfit
+      }
+    })
+    setOutfits(updateOutfit)
+    
   }
 
   return (
@@ -82,19 +120,30 @@ function App() {
           <img src={Logo3} alt="logo" style={{ width: '100%' }} />
           <AppMenu />
           <div className="profile-comp">
-            <ProfilePage user={users} models={models} onUpdatedUser={handleUpdatedUser} />
+            <ProfilePage user={users} models={models} setUsers={setUsers} />
           </div>
         </Route>
         <Route exact path='/myoutfits'>
           <img src={Logo3} alt="logo" style={{ width: '100%' }} />
           <AppMenu />
-          <OutfitContainer users={users} models={models} clothings={clothings} outfits={outfits} />
+          <OutfitContainer users={users} models={models}
+            clothings={clothings} outfits={outfits}
+            setOutfits={setOutfits} 
+            onEditOutfit={handleEditOutfit} />
         </Route>
         <Route exact path='/mycloset'>
           <div className="Closet">
             <img src={Logo3} alt="logo" style={{ width: '100%' }} />
             <AppMenu />
-            <ClosetContainer onAddClothing={handleAddClothing} onDeleteClothing={deleteClothing} clothings={filteredClothings} users={users} models={models} setSearchTerm={setSearchTerm} />
+            <ClosetContainer onAddClothing={handleAddClothing}
+              onDeleteClothing={deleteClothing}
+              clothings={filteredClothings}
+              users={users} models={models}
+              setSearchTerm={setSearchTerm}
+              setOutfits={setOutfits}
+              outfits={outfits}
+              onAddOutfitClothings={handleAddOutfitClothing}
+              onAddOutfits={handleAddOutfit} />
           </div>
         </Route>
       </Switch>

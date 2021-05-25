@@ -94,12 +94,18 @@ function LoginSignup() {
             .then(user => {
                 addUser(user)
                 history.push('/')
+                setName('')
+                setUsername('')
+                setAge('')
+                setImage('')
+                setPassword('')
             })
     }
 
     return (
         <div>
-            <Button type="button" variant="contained" color="primary" size="large" onClick={handleOpenLogin}>
+            <Button type="button" variant="contained"
+                color="primary" size="large" onClick={handleOpenLogin}>
                 Login
             </Button>
             <Modal
@@ -123,7 +129,8 @@ function LoginSignup() {
                                 </TextField>
                             </div>
                             <div>
-                                <TextField id="password" label="Password" type='password' >
+                                <TextField id="password" label="Password"
+                                    type='password' >
                                     <input placeholder='Password' />
                                 </TextField>
                             </div>
@@ -132,7 +139,8 @@ function LoginSignup() {
                                 size="small"
                                 variant="contained"
                                 color='primary'
-                                type='submit'>Login
+                                onClick={handleCloseLogin}
+                                type='submit'> Login
                             </Button>
                         </Form>
                     </div>
@@ -140,25 +148,22 @@ function LoginSignup() {
             </Modal>
             <br />
             <br />
-            <Button type="button" variant="contained" size="large" onClick={handleOpenSignup}>
+            <Button type="button" variant="contained" size="large"
+                onClick={handleOpenSignup}>
                 Sign Up</Button>
             <Modal
-                // aria-labelledby="transition-modal-title"
-                // aria-describedby="transition-modal-description"
                 className={classes.modal}
                 open={openSignup}
                 onClose={handleCloseSignup}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
-                BackdropProps={{ timeout: 500, }}
-            >
+                BackdropProps={{ timeout: 500, }}>
                 <Fade in={openSignup}>
                     <div className={classes.paper}>
                         <h2 id="transition-modal-title">Create A Profile</h2>
-                        <Form className={classesSignup.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+                        <Form className={classesSignup.root}
+                            noValidate autoComplete="off" onSubmit={handleSubmit}>
                             <div>
-                                {/* <TextField id="model_id" type="number" label="model-id" /> */}
-                                {/* <input type='hidden' id='model_id' name='model_id' value='1' /> */}
                                 <TextField id="name"
                                     label="Name"
                                     placeholder='Name'
@@ -215,7 +220,8 @@ function LoginSignup() {
                                     helperText="Please select a gender."
                                     variant="outlined">
                                     {genderOptions.map((option) => (
-                                        <option key={option.value} value={option.value}>
+                                        <option key={option.value}
+                                            value={option.value}>
                                             {option.label}
                                         </option>
                                     ))}
@@ -223,7 +229,8 @@ function LoginSignup() {
                             </div>
                             <div>
                                 <Form.Field required>
-                                    <Checkbox label='I agree to the Terms and Conditions' />
+                                    <Checkbox
+                                        label='I agree to the Terms and Conditions' />
                                 </Form.Field>
                             </div>
                             <br />
@@ -231,6 +238,7 @@ function LoginSignup() {
                                 size="small"
                                 variant="contained"
                                 color="primary"
+                                onClick={handleCloseSignup}
                                 type='submit'>Sign up
                             </Button>
                         </Form>
@@ -241,4 +249,4 @@ function LoginSignup() {
     )
 }
 
-export default LoginSignup;
+export default LoginSignup

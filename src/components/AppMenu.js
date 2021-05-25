@@ -1,7 +1,7 @@
-import MenuPic from '../menu-pic.png';
-import Menu from '@material-ui/core/Menu';
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
+import MenuPic from '../menu-pic.png'
+import Menu from '@material-ui/core/Menu'
+import Button from '@material-ui/core/Button'
+import MenuItem from '@material-ui/core/MenuItem'
 import { useState } from 'react'
 
 
@@ -16,7 +16,9 @@ function AppMenu() {
   }
   return (
     <div className="menu">
-      <img src={MenuPic}  alt="logo" style={{ width: '4%', borderRadius: '50%', margin: '0.7rem 0 0px -65rem' }} onClick={handleClick} />
+      <img src={MenuPic} alt="logo"
+        style={{ width: '4%', borderRadius: '50%', margin: '0.7rem 0 0px -65rem' }}
+        onClick={handleClick} />
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -40,4 +42,4 @@ function AppMenu() {
   )
 }
 
-export default AppMenu;
+export default AppMenu

@@ -26,7 +26,7 @@ function ModelMaker({ id, model_id, color, image }) {
                         size="small"
                         color="default">
                         Choose {color}
-                </Button>
+                    </Button>
                 </CardActions>
             </Card>
         </>
