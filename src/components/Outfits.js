@@ -59,7 +59,6 @@ function Outfits({ name, id, items, onDeleteOutfit }) {
     const handleClose = () => { setOpen(false) }
 
     const outfitImages = items.map(item => item.image)
-    console.log(outfitImages)
     const itemName = items.map(item => item.name)
 
     const handleDeleteOutfit = () => {
@@ -69,16 +68,32 @@ function Outfits({ name, id, items, onDeleteOutfit }) {
         onDeleteOutfit(id)
         history.push('/myoutfits')
     }
-
+    
+    // const handleRenderImage = () => {
+    //     if (outfitImages.length > 1) {
+    //             return (<CardMedia
+    //                 component="img"
+    //                 alt={name}
+    //                 height="250"
+    //                 width="74%"
+    //                 image={outfitImages.map(image => image)}
+    //             />)
+            
+    //     } else if (outfitImages.length === 1) {
+    //         return outfitImages
+    //     }
+    // }
+    // console.log(handleRenderImage());
+console.log(outfitImages[0])
     return (
         <>
             <Card className={classes1.root}>
-                <CardMedia
+            <CardMedia
                     component="img"
                     alt={name}
                     height="250"
                     width="74%"
-                    image={outfitImages}
+                    image={outfitImages.map(image => image)}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">{name}</Typography>

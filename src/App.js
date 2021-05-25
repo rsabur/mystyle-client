@@ -13,6 +13,7 @@ function App() {
   const [clothings, setClothings] = useState([])
   const [users, setUsers] = useState([])
   const [models, setModels] = useState([])
+  const [outfits, setOutfits] = useState([])
   const [isUsersLoaded, setIsUsersLoaded] = useState(false)
   const [isModelsLoaded, setIsModelsLoaded] = useState(false)
   const [isClothingsLoaded, setIsClothingsLoaded] = useState(false)
@@ -29,13 +30,15 @@ function App() {
   }, [])
 
   useEffect(() => {
-    fetch('http://127.0.0.1:3000/users')
+    fetch('http://127.0.0.1:3000/users/2')
       .then(r => r.json())
-      .then(usersArr => {
-        setUsers(usersArr)
+      .then(user => {
+        setUsers(user)
+        setOutfits(user.outfits)
         setIsUsersLoaded(true)
       })
   }, [])
+  // console.log(outfits, users)
 
   useEffect(() => {
     fetch('http://127.0.0.1:3000/models')
@@ -64,6 +67,10 @@ function App() {
     setClothings(newClothingArr);
   }
 
+  const handleUpdatedUser = (updatedUser) => {
+    setUsers(updatedUser) 
+  }
+
   return (
     <div className="App">
       <Switch>
@@ -75,13 +82,13 @@ function App() {
           <img src={Logo3} alt="logo" style={{ width: '100%' }} />
           <AppMenu />
           <div className="profile-comp">
-            <ProfilePage users={users} models={models} />
+            <ProfilePage user={users} models={models} onUpdatedUser={handleUpdatedUser} />
           </div>
         </Route>
         <Route exact path='/myoutfits'>
           <img src={Logo3} alt="logo" style={{ width: '100%' }} />
           <AppMenu />
-          <OutfitContainer users={users} models={models} clothings={clothings} />
+          <OutfitContainer users={users} models={models} clothings={clothings} outfits={outfits} />
         </Route>
         <Route exact path='/mycloset'>
           <div className="Closet">

@@ -65,16 +65,20 @@ const useStyles2 = makeStyles((theme) => ({
 
 
 
-function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTerm, onDeleteClothing, onAddClothing }) {
+function ClothingItem({ clothingTop, 
+    onHandleReset,
+    clothingDress, 
+    clothingBottom, setSearchTerm, onDeleteClothing, onAddClothing, handleClothingSelect }) {
     const classes1 = useStyles1()
     const classes2 = useStyles2()
     const history = useHistory()
     const [open, setOpen] = useState(false)
     const [fav, setFav] = useState(false)
+    
 
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
-    const handleFavClick = () => {
+    const handleFavClick = (id) => {
         setFav(fav => !fav)
     }
     const handleDelete = (id) => {
@@ -85,7 +89,6 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTer
         history.push('/mycloset')
     }
 
-
     return (
         <div className="clothing-item">
             <Card className={classes1.root2} variant="outlined">
@@ -94,10 +97,10 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTer
                     <SearchBar setSearchTerm={setSearchTerm} />
                 </div>
                 <div className={classes1.root}>
-                    <GridList className={classes1.gridList} cols={4}>
+                    <GridList className={classes1.gridList} cols={4} >
                         {clothingTop.map((top) => (
-                            <GridListTile key={top.image}>
-                                <img src={top.image} alt={top.name} />
+                            <GridListTile key={top.image}  >
+                                <img src={top.image} alt={top.name} onClick={() => handleClothingSelect(top.id, top.category, top.image, top.name)}/>
                                 <GridListTileBar
                                     title={top.name}
                                     classes={{
@@ -107,9 +110,9 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTer
                                     actionIcon={
                                         <IconButton aria-label={`star ${top.name}`}>
                                             {fav ? 
-                                            <StarIcon className={classes1.title} onClick={handleFavClick} /> 
+                                            <StarIcon className={classes1.title} onClick={() => handleFavClick(top.id)} /> 
                                             : 
-                                            <StarBorderIcon className={classes1.title} onClick={handleFavClick} />}
+                                            <StarBorderIcon className={classes1.title} onClick={() => handleFavClick(top.id)} />}
                                             <DeleteIcon size='small' onClick={() => handleDelete(top.id)} />
                                         </IconButton>} />
                             </GridListTile>
@@ -119,8 +122,8 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTer
                 <div className={classes1.root}>
                     <GridList className={classes1.gridList} cols={4}>
                         {clothingBottom.map((bottom) => (
-                            <GridListTile key={bottom.image}>
-                                <img src={bottom.image} alt={bottom.name} />
+                            <GridListTile key={bottom.image} >
+                                <img src={bottom.image} alt={bottom.name} onClick={() => handleClothingSelect(bottom.id, bottom.category, bottom.image, bottom.name)} />
                                 <GridListTileBar
                                     title={bottom.name}
                                     classes={{
@@ -142,8 +145,8 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTer
                 <div className={classes1.root}>
                     <GridList className={classes1.gridList} cols={4}>
                         {clothingDress.map((dress) => (
-                            <GridListTile key={dress.image}>
-                                <img src={dress.image} alt={dress.name} />
+                            <GridListTile key={dress.image} >
+                                <img src={dress.image} alt={dress.name} onClick={() => handleClothingSelect(dress.id, dress.category, dress.image, dress.name)} />
                                 <GridListTileBar
                                     title={dress.name}
                                     classes={{
@@ -169,6 +172,12 @@ function ClothingItem({ clothingTop, clothingDress, clothingBottom, setSearchTer
                     color="default"
                     onClick={handleOpen}>
                     Add Clothing </Button>
+                    <Button
+                    type="button"
+                    variant="contained"
+                    color="default"
+                    onClick={onHandleReset}>
+                    Reset Outfit </Button>
                 <Modal
                     aria-labelledby="add-more-clothing"
                     aria-describedby="addtl-clothing-form"

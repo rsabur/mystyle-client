@@ -72,36 +72,76 @@
 margin-top: 2rem;
 }
 
-.top-left-btn {
-  height: 38%;
+.position-blue-top {
+  height: 43%;
   position: absolute;
-  top: 63%;
-  left: 23%;
+  top: 34%;
+  left: 274px;
   transform: translate(-50%, -50%);
 }
 
-.top-right-btn {
-  height: 38%;
+.position-knot-top {
+  height: 191px;
   position: absolute;
-  top: 63%;
-  left: 50%;
+  top: 87px;
+  left: 194px;
+  transform: skew(-5deg);
+}
+
+.position-white-top {
+  height: 15%;
+  position: absolute;
+  top: 28%;
+  left: 49%;
   transform: translate(-50%, -50%);
 }
 
-.btm-left-btn {
-  height: 0%;
+.position-pencil-skirt {
+  height: 205px;
   position: absolute;
-  top: 63%;
-  left: 23%;
+  top: 35%;
+  left: 202px;
+  transform: skew(-4deg, 3deg);
+}
+
+.position-jean-shorts {
+  height: 65%;
+  position: absolute;
+  top: 30%;
+  left: 128px;
+  transform: skew(0deg, 3deg);
+}
+
+.position-tan-skirt {
+  height: 253px;
+  position: absolute;
+  top: 31%;
+  left: 147px;
+  transform: skew(-2deg, 3deg);
+}
+
+.position-tropical-dress {
+  height: 48%;
+  position: absolute;
+  top: 36%;
+  left: 281px;
   transform: translate(-50%, -50%);
 }
 
-.btm-right-btn {
-  height: 0%;
+.position-black-dress {
+  height: 45%;
   position: absolute;
-  top: 63%;
-  left: 50%;
+  top: 41%;
+  left: 282px;
   transform: translate(-50%, -50%);
+}
+
+.position-white-dress {
+  height: 72%;
+  position: absolute;
+  top: 80px;
+  left: 170px;
+  transform: skew(-3deg, -3deg);
 }
 
 .profile-page {
@@ -112,4 +152,8 @@ margin-top: 2rem;
   /* max-width: 345px; */
   margin-bottom: 1rem;
   /* margin-left: 7rem; */
+}
+
+.MuiButton-contained {
+  margin: 3px;
 }

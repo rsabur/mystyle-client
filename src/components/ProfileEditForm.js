@@ -15,16 +15,23 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-function ProfileEditForm() {
+function ProfileEditForm( {userId,
+    userName,
+    userUsername,
+    userAge,
+    userGender,
+    userPassword,
+    userImage,
+    onUpdatedUser} ) {
     const classes = useStyles()
     const [setUser] = useState([])
-    const [model_id, setModel_id] = useState('1')
-    const [name, setName] = useState('')
-    const [username, setUsername] = useState('')
-    const [age, setAge] = useState('')
-    const [image, setImage] = useState('')
-    const [password, setPassword] = useState('')
-    const [gender, setGender] = useState('f')
+    const [model_id] = useState('1')
+    const [name, setName] = useState(userName)
+    const [username, setUsername] = useState(userUsername)
+    const [age, setAge] = useState(userAge)
+    const [image, setImage] = useState(userImage)
+    const [password, setPassword] = useState(userPassword)
+    const [gender, setGender] = useState(userGender)
 
     const genderOptions = [
         { value: 'f', label: 'Female' },
@@ -56,16 +63,11 @@ function ProfileEditForm() {
             body: JSON.stringify(formData)
         })
             .then(r => r.json())
-            .then(updatedUser => {
-                setUser(updatedUser)
+            .then(updatedUserObj => {
+                setUser(updatedUserObj)
+                console.log(updatedUserObj)
+                onUpdatedUser(updatedUserObj)
                 history.push('/myprofile')
-                setName('')
-                setUsername('')
-                setAge('')
-                setGender('f')
-                setPassword('')
-                setImage('')
-                setModel_id('1')
             })
     }
 

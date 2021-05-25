@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-function ProfilePage({ users, models }) {
-    const user = users.map(user => <ProfileCard key={user.id} {...user} />)
+function ProfilePage({ user, models, onUpdatedUser }) {
+    // const user = users.map(user => <ProfileCard key={user.id} {...user} />)
     const model = models.map(model => <ModelMaker key={model.id} {...model} user={user} />)
 
     const classes = useStyles()
-    console.log(users);
 
     return (
         <div className="profile-page">
@@ -36,7 +35,7 @@ function ProfilePage({ users, models }) {
                     My Info:
                 </h3>
                 <Paper className={classes.paper}>
-                    {user[0]}
+                    <ProfileCard user={user} onUpdatedUser={onUpdatedUser} />
                 </Paper>
             </Grid>
             <Grid container

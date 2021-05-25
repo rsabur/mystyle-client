@@ -34,27 +34,17 @@ const useStyles2 = makeStyles((theme) => ({
 }))
 
 
-function ProfileCard({
-    id,
-    name,
-    username,
-    age,
-    gender,
-    password,
-    image = "https://norrismgmt.com/wp-content/uploads/2020/05/24-248253_user-profile-default-image-png-clipart-png-download.png" }) {
-
-
+function ProfileCard({ user, onUpdatedUser }) {
     const classes1 = useStyles1()
     const classes2 = useStyles2()
+    const history = useHistory()
     const [open, setOpen] = useState(false)
 
-    const history = useHistory()
-    
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
 
     const handleDeleteProfile = () => {
-        fetch(`http://localhost:3000/users/${id}`, {
+        fetch(`http://localhost:3000/users/${user.id}`, {
             method: 'DELETE'
         })
         history.push('/')
@@ -65,13 +55,13 @@ function ProfileCard({
             <Card className={classes1.root}>
                 <CardMedia
                     component="img"
-                    alt={name}
+                    alt={user.name}
                     height="250"
-                    image={image} />
+                    image={user.image} />
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">{name}</Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">Username: {username}</Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">Age: {age}</Typography>
+                    <Typography gutterBottom variant="h5" component="h2">{user.name}</Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">Username: {user.username}</Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">Age: {user.age}</Typography>
                 </CardContent>
                 <CardActions>
                     <Button
@@ -94,13 +84,14 @@ function ProfileCard({
                         <Fade in={open}>
                             <div className={classes2.paper}>
                                 <h2 id="transition-modal-title">Edit Profile</h2>
-                                    <ProfileEditForm id={id}
-                                        name={name}
-                                        username={username}
-                                        age={age}
-                                        gender={gender}
-                                        password={password}
-                                        image={image} /></div>
+                                <ProfileEditForm userId={user.id}
+                                    userName={user.name}
+                                    userUsername={user.username}
+                                    userAge={user.age}
+                                    userGender={user.gender}
+                                    userPassword={user.password}
+                                    userImage={user.image}
+                                    onUpdatedUser={onUpdatedUser} /></div>
                         </Fade>
                     </Modal>
                     <Button onClick={handleDeleteProfile}
