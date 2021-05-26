@@ -16,9 +16,9 @@ function App() {
   const [clothings, setClothings] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   const [isLoaded, setIsLoaded] = useState(false)
+  const [outfitClothings, setOutfitClothings] = useState([])
   const [isOutfitClothingsLoaded, setIsOutfitClothingsLoaded] = useState(false)
   const [isUsersLoaded, setIsUsersLoaded] = useState(false)
-  const [outfitClothings, setOutfitClothings] = useState([])
   const [isModelsLoaded, setIsModelsLoaded] = useState(false)
   const [isClothingsLoaded, setIsClothingsLoaded] = useState(false)
 
@@ -81,12 +81,12 @@ function App() {
     const newClothingArr = [newClothing, ...clothings]
     setClothings(newClothingArr)
   }
-  
+
   const handleAddOutfit = (newOutfit) => {
     const newOutfitsArr = [newOutfit, ...outfits]
     setOutfits(newOutfitsArr)
   }
-  
+
   const handleAddOutfitClothing = (newOutfitClothing) => {
     const newOutfitClothingsArr = [newOutfitClothing, ...outfitClothings]
     setOutfitClothings(newOutfitClothingsArr)
@@ -106,7 +106,6 @@ function App() {
       }
     })
     setOutfits(updateOutfit)
-    
   }
 
   return (
@@ -114,7 +113,7 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <img src={Logo} alt="logo" style={{ width: '100%', height: "27rem" }} />
-          <LandingPage models={models} />
+          <LandingPage models={models} users={users} setUsers={setUsers} />
         </Route>
         <Route exact path='/myprofile'>
           <img src={Logo3} alt="logo" style={{ width: '100%' }} />
@@ -128,7 +127,7 @@ function App() {
           <AppMenu />
           <OutfitContainer users={users} models={models}
             clothings={clothings} outfits={outfits}
-            setOutfits={setOutfits} 
+            outfitClothings={outfitClothings} setOutfits={setOutfits}
             onEditOutfit={handleEditOutfit} />
         </Route>
         <Route exact path='/mycloset'>

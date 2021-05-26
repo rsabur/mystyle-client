@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Modal from '@material-ui/core/Modal'
-import Backdrop from '@material-ui/core/Backdrop'
-import { useHistory } from "react-router-dom"
 import Fade from '@material-ui/core/Fade'
+import Modal from '@material-ui/core/Modal'
+import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
+import Backdrop from '@material-ui/core/Backdrop'
 import { Form, Checkbox } from 'semantic-ui-react'
 import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,21 +33,20 @@ const useStylesSignup = makeStyles((theme) => ({
 }))
 
 
-function LoginSignup() {
+function LoginSignup({users, setUsers}) {
     const classes = useStyles()
     const classesSignup = useStylesSignup()
 
     const [openLogin, setOpenLogin] = useState(false)
     const [openSignup, setOpenSignup] = useState(false)
 
-    const [user, setUser] = useState([])
     const [model_id] = useState('')
-    const [name, setName] = useState('')
-    const [username, setUsername] = useState('')
     const [age, setAge] = useState('')
+    const [name, setName] = useState('')
     const [image, setImage] = useState('')
-    const [password, setPassword] = useState('')
     const [gender, setGender] = useState('f')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
     const history = useHistory()
 
@@ -55,6 +54,7 @@ function LoginSignup() {
     const handleCloseLogin = () => { setOpenLogin(false) }
     const handleOpenSignup = () => { setOpenSignup(true) }
     const handleCloseSignup = () => { setOpenSignup(false) }
+    const handleGenderChange = (e) => { setGender(e.target.value) }
 
     const genderOptions = [
         { value: 'f', label: 'Female' },
@@ -62,11 +62,10 @@ function LoginSignup() {
         { value: 'nb', label: 'Non-Binary' }
     ]
 
-    const handleGenderChange = (e) => { setGender(e.target.value) }
 
     const addUser = (newUser) => {
-        const newUserArr = [newUser, ...user]
-        setUser(newUserArr)
+        const newUserArr = [newUser, ...users]
+        setUsers(newUserArr)
     }
 
     const handleSubmit = (e) => {
@@ -93,7 +92,7 @@ function LoginSignup() {
             .then(r => r.json())
             .then(user => {
                 addUser(user)
-                history.push('/')
+                history.push('/myprofile')
                 setName('')
                 setUsername('')
                 setAge('')

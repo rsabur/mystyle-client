@@ -5,7 +5,7 @@ function OutfitContainer({ outfits, setOutfits, onEditOutfit }) {
         const minusOutfit = outfits.filter(outfit => outfit.id !== outfitId)
         setOutfits(minusOutfit)
     }
-
+    
     const outfit = outfits.map(outfit => {
         return <Outfits key={outfit.id} {...outfit}
             items={outfit.clothings} onDeleteOutfit={handleDeleteOutfit}

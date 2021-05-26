@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
 
 function OutfitEditForm({ outfitName, handleClose, setOutfits, id, outfits, onEditOutfit }) {
     const classes = useStyles()
-    const [name, setName] = useState(outfitName)
     const [userId] = useState(1)
+    const [name, setName] = useState(outfitName)
 
     const handleSubmit = (e) => {
         e.preventDefault()

@@ -1,9 +1,9 @@
-import { useHistory } from "react-router-dom"
-import { Form } from 'semantic-ui-react'
-import { makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
 import { useState } from 'react'
+import { Form } from 'semantic-ui-react'
+import { useHistory } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,12 +16,11 @@ const useStyles = makeStyles((theme) => ({
 
 function ClothingForm({ onAddClothing, onClose }) {
     const classes = useStyles()
+    const [name, setName] = useState('')
     const [size, setSize] = useState('s')
     const [image, setImage] = useState('')
-    const [name, setName] = useState('')
-    const [category, setCategory] = useState('top')
-    // const [clothing, setClothing] = useState([])
     const [gender, setGender] = useState('f')
+    const [category, setCategory] = useState('top')
 
     const categoryOptions = [
         { value: 'top', label: 'Top' },
@@ -40,14 +39,10 @@ function ClothingForm({ onAddClothing, onClose }) {
     ]
 
     const history = useHistory()
-    const handleCatChange = (e) => { setCategory(e.target.value) }
     const handleSizeChange = (e) => { setSize(e.target.value) }
+    const handleCatChange = (e) => { setCategory(e.target.value) }
     const handleGenderChange = (e) => { setGender(e.target.value) }
-    
-    // const addClothing = (newClothing) => {
-    //     const newClothingArr = [newClothing, ...clothing]
-    //     setClothing(newClothingArr)
-    // }
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -69,7 +64,6 @@ function ClothingForm({ onAddClothing, onClose }) {
         })
             .then(r => r.json())
             .then(clothing => {
-                // addClothing(clothing)
                 onAddClothing(clothing)
                 history.push('/mycloset')
                 setName('')
@@ -161,4 +155,4 @@ function ClothingForm({ onAddClothing, onClose }) {
     )
 }
 
-export default ClothingForm;
+export default ClothingForm

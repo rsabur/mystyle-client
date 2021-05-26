@@ -39,12 +39,14 @@
 }
 
 .Closet {
-  background-image: url("https://i.imgur.com/RZZp1Ky.jpg");
+  /* background-image: url("https://www.pico-sa.com/wp-content/uploads/2018/09/probadordelujo1.jpg"); */
+  background-image: url("https://netrinoimages.s3.eu-west-2.amazonaws.com/2018/03/11/501046/225459/dressing_room_luxury_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_2358652_o.jpg");
+  /* background-image: url('https://www.luxurylifestylemag.co.uk/wp-content/uploads/2021/04/bigstock-D-Illustration-Of-Luxury-Ward-105708023.jpg'); */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 60rem;
+  height: 65rem;
 }
 
 /* .main-container {
@@ -73,19 +75,289 @@
 }
 
 .position-blue-top {
-  height: 43%;
+  height: 42%;
+  width: 307px;
   position: absolute;
-  top: 34%;
-  left: 274px;
-  transform: translate(-50%, -50%);
+  top: 13%;
+  left: 123px;
+  transform: skew(3deg, -3deg);
 }
 
 .position-knot-top {
   height: 191px;
+  width: 221px;
+  position: absolute;
+  top: 113px;
+  left: 171px;
+  z-index: 1;
+  transform: skew(-3deg, 358deg);
+}
+
+.position-button-crop {
+  height: 51%;
+  width: 235px;
+  position: absolute;
+  top: 47px;
+  left: 162px;
+  z-index: 1;
+  transform: skew(-2deg, -3deg);
+}
+.position-v-shirt {
+  height: 44%;
+  width: 285px;
+  position: absolute;
+  top: 11px;
+  left: 140px;
+  /* z-index: 1; */
+  transform: skew(-2deg, -4deg);
+}
+.position-black-body {
+  height: 47%;
+  width: 220px;
+  position: absolute;
+  top: 62px;
+  left: 173px;
+  transform: skew(-2deg, -2deg);
+}
+
+.position-blue-crop {
+  height: 50%;
+  width: 244px;
+  position: absolute;
+  top: -7px;
+  left: 161px;
+  transform: skew(-3deg, -1deg);
+}
+.position-logo-top {
+  height: 42%;
+  width: 219px;
+  position: absolute;
+  top: 69px;
+  left: 171px;
+  transform: skew(-2deg, -2deg);
+}
+.position-silk-top {
+  height: 255px;
+  width: 190px;
+  position: absolute;
+  top: 73px;
+  left: 187px;
+  z-index: 1;
+  transform: skew(-2deg, -3deg);
+}
+.position-pink-cardi {
+  height: 301px;
+  position: absolute;
+  top: 65px;
+  left: 188px;
+  z-index: 1;
+  transform: skew(-2deg, -2deg);
+}
+.position-bw-crop {
+  height: 400px;
+  position: absolute;
+  top: -23px;
+  left: 158px;
+  z-index: 1;
+  transform: skew(-2deg, -3deg);
+}
+.position-polkadot-top {
+  height: 270px;
+  position: absolute;
+  top: 41px;
+  left: 199px;
+  z-index: 1;
+  transform: skew(-2deg, -3deg);
+}
+.position-cutout-top {
+  height: 353px;
+  width: 260px;
+  position: absolute;
+  top: 27px;
+  left: 153px;
+  z-index: 1;
+  transform: skew(-2deg, -4deg);
+}
+.position-orange-body {
+  height: 299px;
+  width: 201px;
+  position: absolute;
+  top: 82px;
+  left: 179px;
+  transform: skew(-1deg, -4deg);
+}
+.position-linen-top {
+  height: 402px;
+  width: 268px;
+  position: absolute;
+  top: 34px;
+  left: 145px;
+  z-index: 1;
+  transform: skew(0deg, -3deg)
+}
+
+.position-bw-skirt {
+  height: 397px;
+  width: 265px;
+  position: absolute;
+  top: 31%;
+  left: 139px;
+  transform: skew(-5deg, 3deg);
+}
+.position-denim-short {
+  height: 299px;
+  /* width: 265px; */
+  position: absolute;
+  top: 22%;
+  left: 181px;
+  transform: skew(-4deg, -3deg);
+}
+.position-blue-skirt {
+  height: 512px;
+  /* width: 265px; */
+  position: absolute;
+  top: 30%;
+  left: 103px;
+  transform: skew(-4deg, -3deg);
+}
+.position-orange-short {
+  height: 292px;
+  /* width: 265px; */
+  position: absolute;
+  top: 22%;
+  left: 184px;
+  transform: skew(-4deg, -3deg);
+}
+.position-print-pant {
+  height: 466px;
+  width: 278px;
+  position: absolute;
+  top: 31%;
+  left: 126px;
+  transform: skew(-4deg, -7deg);
+}
+.position-wideleg-pant {
+  height: 491px;
+  width: 289px;
+  position: absolute;
+  top: 30%;
+  left: 127px;
+  transform: skew(-2deg, 0deg);
+}
+.position-green-short {
+  height: 258px;
+  width: 195px;
+  position: absolute;
+  top: 26%;    
+  z-index: 1;
+  left: 176px;
+  transform: skew(-4deg, -5deg);
+}
+.position-tiger-pant {
+  height: 581px;
+  width: 319px;
+  position: absolute;
+  top: 24%;
+  left: 108px;
+  transform: skew(-3deg, 2deg);
+}
+
+.position-hilo-skirt {
+  height: 367px;
+  /* width: 265px; */
+  position: absolute;
+  top: 31%;
+  left: 154px;
+  transform: skew(-4deg, -3deg);
+}
+.position-neon-pant {
+  height: 498px;
+  width: 306px;
+  position: absolute;
+  top: 29%;
+  left: 116px;
+  transform: skew(-3deg, 2deg);
+}
+.position-tiered-skirt {
+  height: 503px;
+  width: 294px;
+  position: absolute;
+  top: 29%;
+  left: 117px;
+  transform: skew(-4deg, 2deg);
+}
+
+.position-leaf-dress {
+  height: 55%;
+  width: 230px;
+  position: absolute;
+  top: 67px;
+  left: 163px;
+  transform: skew(-3deg, -3deg);
+}
+.position-sequin-dress {
+  height: 48%;
+  width: 225px;
+  position: absolute;
+  top: 95px;
+  left: 165px;
+  transform: skew(-5deg, -2deg);
+}
+.position-flower-dress {
+  height: 69%;
+  width: 302px;
+  position: absolute;
+  top: 92px;
+  left: 120px;
+  transform: skew(-5deg, -2deg);
+}
+.position-blue-maxi {
+  height: 73%;
+  width: 345px;
+  position: absolute;
+  top: 85px;
+  left: 105px;
+  transform: skew(-2deg, -3deg);
+}
+.position-white-belt-dress {
+  height: 59%;
+  width: 275px;
+  position: absolute;
+  top: 43px;
+  left: 138px;
+  transform: skew(-3deg, -3deg);
+}
+.position-tribal-dress {
+  height: 69%;
+  width: 284px;
+  position: absolute;
+  top: 88px;
+  left: 135px;
+  transform: skew(-3deg, 0deg);
+}
+.position-plaid-dress {
+  height: 68%;
+  width: 185px;
+  position: absolute;
+  top: 92px;
+  left: 185px;
+  transform: skew(-2deg, 0deg);
+}
+.position-puffsleeve-dress {
+  height: 68%;
+  width: 328px;
   position: absolute;
   top: 87px;
-  left: 194px;
-  transform: skew(-5deg);
+  left: 113px;
+  transform: skew(-2deg, 0deg);
+}
+.position-blue-mini {
+  height: 76%;
+  width: 312px;
+  position: absolute;
+  top: -14px;
+  left: 121px;
+  transform: skew(-1deg, -4deg);
 }
 
 .position-white-top {
@@ -97,35 +369,35 @@
 }
 
 .position-pencil-skirt {
-  height: 205px;
+  height: 251px;
   position: absolute;
   top: 35%;
-  left: 202px;
+  left: 184px;
   transform: skew(-4deg, 3deg);
 }
 
 .position-jean-shorts {
-  height: 65%;
+  height: 63%;
   position: absolute;
-  top: 30%;
-  left: 128px;
+  top: 31%;
+  left: 94px;
   transform: skew(0deg, 3deg);
 }
 
 .position-tan-skirt {
-  height: 253px;
+  height: 290px;
   position: absolute;
-  top: 31%;
-  left: 147px;
+  top: 29%;
+  left: 128px;
   transform: skew(-2deg, 3deg);
 }
 
 .position-tropical-dress {
-  height: 48%;
+  height: 47%;
   position: absolute;
-  top: 36%;
-  left: 281px;
-  transform: translate(-50%, -50%);
+  top: 86px;
+  left: 143px;
+  transform: skew(-3deg, 2deg);
 }
 
 .position-black-dress {
@@ -137,12 +409,14 @@
 }
 
 .position-white-dress {
-  height: 72%;
+  height: 71%;
   position: absolute;
-  top: 80px;
-  left: 170px;
+  top: 101px;
+  left: 144px;
   transform: skew(-3deg, -3deg);
 }
+
+
 
 .profile-page {
   display: inline-flex;

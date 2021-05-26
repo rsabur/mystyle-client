@@ -3,6 +3,7 @@ import { useHistory } from 'react-router'
 import Fade from '@material-ui/core/Fade'
 import Card from '@material-ui/core/Card'
 import Modal from '@material-ui/core/Modal'
+import Paper from '@material-ui/core/Paper'
 import OutfitEditForm from './OutfitEditForm'
 import Button from '@material-ui/core/Button'
 import Backdrop from '@material-ui/core/Backdrop'
@@ -12,7 +13,6 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import Paper from '@material-ui/core/Paper'
 
 const useStyles1 = makeStyles({
     root: {
@@ -48,7 +48,6 @@ const useStyles2 = makeStyles((theme) => ({
 
 function Outfits({ name, id, items, onDeleteOutfit, setOutfits, outfits, onEditOutfit }) {
     const classes = useStyles()
-    // const history = useHistory()
     const classes1 = useStyles1()
     const classes2 = useStyles2()
     const history = useHistory()
@@ -57,6 +56,7 @@ function Outfits({ name, id, items, onDeleteOutfit, setOutfits, outfits, onEditO
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
 
+    console.log(items)
     const outfitImages = items.map(item => item.image)
     const itemName = items.map(item => item.name)
 
@@ -79,6 +79,7 @@ function Outfits({ name, id, items, onDeleteOutfit, setOutfits, outfits, onEditO
                         height="250"
                         width="74%"
                         image={outfitImages[0]} />
+                        {console.log(outfitImages[0])}
                     <CardMedia
                         className='outfit-format'
                         component="img"
@@ -115,7 +116,7 @@ function Outfits({ name, id, items, onDeleteOutfit, setOutfits, outfits, onEditO
 
     return (
         <Paper className={classes.paper}>
-            <Card className={classes1.root}>
+            <Card className={classes1.root} key={id} >
                 {handleRenderImage()}
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
