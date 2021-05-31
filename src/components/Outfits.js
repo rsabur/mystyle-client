@@ -46,7 +46,7 @@ const useStyles2 = makeStyles((theme) => ({
     },
 }))
 
-function Outfits({ name, id, items, onDeleteOutfit, setOutfits, outfits, onEditOutfit }) {
+function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
     const classes = useStyles()
     const classes1 = useStyles1()
     const classes2 = useStyles2()
@@ -56,9 +56,10 @@ function Outfits({ name, id, items, onDeleteOutfit, setOutfits, outfits, onEditO
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
 
-    console.log(items)
-    const outfitImages = items.map(item => item.image)
-    const itemName = items.map(item => item.name)
+    
+
+    const outfitImages = !!items && items.map(item => item.image)
+    const itemName = !!items && items.map(item => item.name)
 
     const handleDeleteOutfit = () => {
         fetch(`http://localhost:3000/outfits/${id}`, {
@@ -70,21 +71,22 @@ function Outfits({ name, id, items, onDeleteOutfit, setOutfits, outfits, onEditO
 
     const handleRenderImage = () => {
         if (outfitImages.length > 1) {
+            console.log(outfitImages[0])
             return (
                 <>
                     <CardMedia
                         className='outfit-format'
                         component="img"
                         alt={name}
-                        height="250"
+                        height="200"
                         width="74%"
                         image={outfitImages[0]} />
-                        {console.log(outfitImages[0])}
+                    {/* {console.log(outfitImages[0])} */}
                     <CardMedia
                         className='outfit-format'
                         component="img"
                         alt={name}
-                        height="250"
+                        height="200"
                         width="74%"
                         image={outfitImages[1]} />
                 </>
@@ -105,11 +107,11 @@ function Outfits({ name, id, items, onDeleteOutfit, setOutfits, outfits, onEditO
         if (itemName.length > 1) {
             return (
                 <Typography variant="body2" color="textSecondary" component="p">
-                        Clothing Name: {itemName[0]} & {itemName[1]}</Typography>
+                    Clothing Name: {itemName[0]} & {itemName[1]}</Typography>
             )
         } else if (itemName.length === 1) {
             <Typography variant="body2" color="textSecondary" component="p">
-                        Clothing Name: {itemName}</Typography>
+                Clothing Name: {itemName}</Typography>
         }
     }
 
@@ -146,7 +148,6 @@ function Outfits({ name, id, items, onDeleteOutfit, setOutfits, outfits, onEditO
                                 <h2 id="transition-modal-title">Edit Outfit Name</h2>
                                 <OutfitEditForm id={id} outfitName={name}
                                     handleClose={handleClose}
-                                    setOutfits={setOutfits} outfits={outfits}
                                     onEditOutfit={onEditOutfit} />
                             </div>
                         </Fade>

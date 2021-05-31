@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Outfits from './Outfits'
 
 function OutfitContainer({ outfits, setOutfits, onEditOutfit }) {
@@ -6,10 +7,13 @@ function OutfitContainer({ outfits, setOutfits, onEditOutfit }) {
         setOutfits(minusOutfit)
     }
     
+    useEffect(() => {
+        console.log(outfits)
+    })
     const outfit = outfits.map(outfit => {
-        return <Outfits key={outfit.id} {...outfit}
+        return <Outfits key={outfit.name + outfit.id} {...outfit}
             items={outfit.clothings} onDeleteOutfit={handleDeleteOutfit}
-            setOutfits={setOutfits} outfits={outfits} onEditOutfit={onEditOutfit} />
+            onEditOutfit={onEditOutfit} />
     })
 
     return (

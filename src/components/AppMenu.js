@@ -29,13 +29,13 @@ function AppMenu() {
           <Button href="/myprofile">My Profile</Button>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Button href="/myoutfits">My Outfits</Button>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
           <Button href="/mycloset">My Closet</Button>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Button>Logout</Button>
+          <Button href="/myoutfits">My Outfits</Button>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Button href="/">Logout</Button>
         </MenuItem>
       </Menu>
     </div>

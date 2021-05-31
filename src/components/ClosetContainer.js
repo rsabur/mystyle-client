@@ -2,15 +2,13 @@ import ClothingItem from './ClothingItem'
 import OutfitMaker from './OutfitMaker'
 import Grid from '@material-ui/core/Grid'
 import { useState } from 'react'
-import { useHistory } from 'react-router'
 
 
 function ClosetContainer({ clothings, users,
     models, setSearchTerm, onDeleteClothing,
     onAddClothing, onAddOutfitClothings,
-    onAddOutfits }) {
+    onAddOutfits, outfits }) {
     const [userId] = useState(1)
-    const history = useHistory()
     const [top, setTop] = useState('')
     const [name] = useState('Untitled')
     const [dress, setDress] = useState('')
@@ -43,7 +41,7 @@ function ClosetContainer({ clothings, users,
             })
                 .then(r => r.json())
                 .then(outfitObj => {
-                    onAddOutfits(outfitObj)
+                    // onAddOutfits(outfitObj)
                     const outfitId = outfitObj.id
 
                     const firstClothingsData = {
@@ -60,7 +58,8 @@ function ClosetContainer({ clothings, users,
                     })
                         .then(r => r.json())
                         .then(outfitClothingObj => {
-                            onAddOutfitClothings(outfitClothingObj)
+                            onAddOutfits(outfitObj.outfit_clothings.push(outfitClothingObj))
+                            onAddOutfits(outfitObj.clothings.push(top))
                         })
                         .then(() => {
                             const secondClothingsData = {
@@ -77,8 +76,8 @@ function ClosetContainer({ clothings, users,
                             })
                                 .then(r => r.json())
                                 .then(outfitClothingObj => {
-                                    onAddOutfitClothings(outfitClothingObj)
-                                    history.push('/myoutfits')
+                                    onAddOutfits(outfitObj.outfit_clothings.push(outfitClothingObj))
+                                    onAddOutfits(outfitObj.clothings.push(bottom))
                                 })
                         })
                 })
@@ -98,7 +97,7 @@ function ClosetContainer({ clothings, users,
             })
                 .then(r => r.json())
                 .then(outfitObj => {
-                    onAddOutfits(outfitObj)
+                    console.log(outfitObj)
                     const outfitId = outfitObj.id
 
                     const outfitClothingsData = {
@@ -115,8 +114,8 @@ function ClosetContainer({ clothings, users,
                     })
                         .then(r => r.json())
                         .then(outfitClothingObj => {
-                            onAddOutfitClothings(outfitClothingObj)
-                            history.push('/myoutfits')
+                            onAddOutfits(outfitObj.outfit_clothings.push(outfitClothingObj))
+                            onAddOutfits(outfitObj.clothings.push(dress))
                         })
                 })
 
@@ -125,13 +124,14 @@ function ClosetContainer({ clothings, users,
         }
     }
 
-    const handleClothingSelect = (id, category, image, name, gender) => {
+
+    const handleClothingSelect = (id, category, image, name, gender, size) => {
         if (category === 'top') {
-            setTop({ closet_id: id, id, category, image, name, gender })
+            setTop({ id, category, image, name, gender, size })
         } else if (category === 'bottom') {
-            setBottom({ closet_id: id, id, category, image, name, gender })
+            setBottom({ id, category, image, name, gender, size })
         } else if (category === 'dress') {
-            setDress({ closet_id: id, id, category, image, name, gender })
+            setDress({ id, category, image, name, gender, size })
         }
     }
     const handleReset = () => {

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-function OutfitEditForm({ outfitName, handleClose, setOutfits, id, outfits, onEditOutfit }) {
+function OutfitEditForm({ outfitName, handleClose, id, onEditOutfit }) {
     const classes = useStyles()
     const [userId] = useState(1)
     const [name, setName] = useState(outfitName)
