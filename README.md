@@ -1,3 +1,5 @@
+View server-side repo [here](https://github.com/rsabur/mystyle-server).
+
 # MyStyle
 
 A web app designed to act as a virtual fitting room for the sylista in mind. Users can update their closet by adding articles of clothing, trying on seperates and creating new looks. From a profile page, a user can also view, update and delete their own information, as well as, change their model. UX/UI-focused outfit styling app.
