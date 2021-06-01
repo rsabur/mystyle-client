@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         display: 'inline-flex',
         padding: theme.spacing(6),
+        margin: '1rem',
+        backgroundColor: 'gainsboro',
+        opacity: '0.9',
+        // height: '400px',
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
@@ -44,6 +48,9 @@ const useStyles2 = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    button: {
+        backgroundColor: 'white'
+    }
 }))
 
 function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
@@ -56,7 +63,7 @@ function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
 
-    
+
 
     const outfitImages = !!items && items.map(item => item.image)
     const itemName = !!items && items.map(item => item.name)
@@ -66,6 +73,7 @@ function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
             method: 'DELETE'
         })
         onDeleteOutfit(id)
+        console.log(id)
         history.push('/myoutfits')
     }
 
@@ -78,16 +86,16 @@ function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
                         className='outfit-format'
                         component="img"
                         alt={name}
-                        height="200"
-                        width="74%"
+                        // height="200"
+                        style={{ marginBottom: '-13rem' }}
                         image={outfitImages[0]} />
                     {/* {console.log(outfitImages[0])} */}
                     <CardMedia
                         className='outfit-format'
                         component="img"
                         alt={name}
-                        height="200"
-                        width="74%"
+                        // height="200"
+                        // style={{ width: '68%', marginLeft: '3.5rem' }}
                         image={outfitImages[1]} />
                 </>
             )
@@ -97,8 +105,8 @@ function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
                     className='outfit-format'
                     component="img"
                     alt={name}
-                    height="250"
-                    width="74%"
+                    // height="250"
+                    // style={{  marginTop: '10rem' }}
                     image={outfitImages} />)
         }
     }
@@ -109,7 +117,7 @@ function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
                 <Typography variant="body2" color="textSecondary" component="p">
                     Clothing Name: {itemName[0]} & {itemName[1]}</Typography>
             )
-        } else if (itemName.length === 1) {
+        } else {
             <Typography variant="body2" color="textSecondary" component="p">
                 Clothing Name: {itemName}</Typography>
         }
@@ -126,43 +134,43 @@ function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
                     {handleRenderName()}
                 </CardContent>
                 <CardActions>
-                    <Button
-                        size="small"
-                        variant="outlined"
-                        color="primary"
-                        type="button"
-                        onClick={handleOpen}>
-                        Edit
-                    </Button>
-                    <Modal
-                        aria-labelledby="edit-profile"
-                        aria-describedby="edit-profile"
-                        className={classes2.modal}
-                        open={open}
-                        onClose={handleClose}
-                        closeAfterTransition
-                        BackdropComponent={Backdrop}
-                        BackdropProps={{ timeout: 500, }}>
-                        <Fade in={open}>
-                            <div className={classes2.paper}>
-                                <h2 id="transition-modal-title">Edit Outfit Name</h2>
-                                <OutfitEditForm id={id} outfitName={name}
-                                    handleClose={handleClose}
-                                    onEditOutfit={onEditOutfit} />
-                            </div>
-                        </Fade>
-                    </Modal>
-                    <Button
-                        onClick={handleDeleteOutfit}
-                        size="small"
-                        variant="contained"
-                        color="secondary"
-                        className={classes2.button}
-                        startIcon={<DeleteIcon />}>
-                        Delete
-                  </Button>
                 </CardActions>
             </Card>
+            <Button
+                className={classes2.button}
+                size="small"
+                variant="outlined"
+                color="primary"
+                type="button"
+                onClick={handleOpen}>
+                Edit
+                    </Button>
+            <Modal
+                aria-labelledby="edit-profile"
+                aria-describedby="edit-profile"
+                className={classes2.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{ timeout: 500, }}>
+                <Fade in={open}>
+                    <div className={classes2.paper}>
+                        <h2 id="transition-modal-title">Change Outfit Name</h2>
+                        <OutfitEditForm id={id} outfitName={name}
+                            handleClose={handleClose}
+                            onEditOutfit={onEditOutfit} />
+                    </div>
+                </Fade>
+            </Modal>
+            <Button
+                onClick={handleDeleteOutfit}
+                size="small"
+                variant="contained"
+                color="secondary"
+                startIcon={<DeleteIcon />}>
+
+            </Button>
         </Paper>
     )
 }

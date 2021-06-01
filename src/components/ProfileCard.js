@@ -39,10 +39,10 @@ function ProfileCard({ user, setUsers }) {
     const classes1 = useStyles1()
     const classes2 = useStyles2()
     const [open, setOpen] = useState(false)
-
+    
+console.log(user.id);
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
-
     const handleDeleteProfile = () => {
         fetch(`http://localhost:3000/users/${user.id}`, {
             method: 'DELETE'
@@ -56,7 +56,7 @@ function ProfileCard({ user, setUsers }) {
                 <CardMedia
                     component="img"
                     alt={user.name}
-                    height="250"
+                    height="350"
                     image={user.image} />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
@@ -89,6 +89,7 @@ function ProfileCard({ user, setUsers }) {
                                 <h2 id="transition-modal-title">Edit Profile</h2>
                                 <ProfileEditForm userId={user.id}
                                     userName={user.name}
+                                    userModel={user.model_id}
                                     userUsername={user.username}
                                     userAge={user.age}
                                     userGender={user.gender}

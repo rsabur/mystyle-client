@@ -33,28 +33,32 @@ const useStylesSignup = makeStyles((theme) => ({
 }))
 
 
-function LoginSignup({users, setUsers}) {
+function LoginSignup({ users, setUsers }) {
     const classes = useStyles()
     const classesSignup = useStylesSignup()
 
     const [openLogin, setOpenLogin] = useState(false)
     const [openSignup, setOpenSignup] = useState(false)
 
-    const [model_id] = useState('')
     const [age, setAge] = useState('')
     const [name, setName] = useState('')
     const [image, setImage] = useState('')
     const [gender, setGender] = useState('f')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [model_id, setModel_id] = useState('')
 
     const history = useHistory()
 
     const handleOpenLogin = () => { setOpenLogin(true) }
-    const handleCloseLogin = () => { setOpenLogin(false) }
+    const handleCloseLogin = () => { 
+        setOpenLogin(false) 
+        history.push('/myprofile')
+    }
     const handleOpenSignup = () => { setOpenSignup(true) }
     const handleCloseSignup = () => { setOpenSignup(false) }
     const handleGenderChange = (e) => { setGender(e.target.value) }
+    const handleModelChange = (e) => { setModel_id(e.target.value) }
 
     const genderOptions = [
         { value: 'f', label: 'Female' },
@@ -62,6 +66,11 @@ function LoginSignup({users, setUsers}) {
         { value: 'nb', label: 'Non-Binary' }
     ]
 
+    const modelOptions = [
+        { value: '1', label: 'Deep Tone' },
+        { value: '2', label: 'Olive Tone' },
+        { value: '3', label: 'Pale Tone' },
+    ]
 
     const addUser = (newUser) => {
         const newUserArr = [newUser, ...users]
@@ -221,6 +230,22 @@ function LoginSignup({users, setUsers}) {
                                     {genderOptions.map((option) => (
                                         <option key={option.value}
                                             value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </TextField>
+                            </div>
+                            <div>
+                                <TextField id="model_id"
+                                    label="Model"
+                                    select
+                                    value={model_id}
+                                    onChange={handleModelChange}
+                                    SelectProps={{ native: true, }}
+                                    helperText="Please select a gender."
+                                    variant="outlined">
+                                    {modelOptions.map((option) => (
+                                        <option key={option.value} value={option.value}>
                                             {option.label}
                                         </option>
                                     ))}

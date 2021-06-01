@@ -1,6 +1,23 @@
 .App {
   text-align: center;
   color: black;
+  /* background-color: #ff7d71; */
+  /* background-color: grey; */
+  /* background-image: url('https://image.freepik.com/free-vector/geometric-medical-concept-white-background_88211-251.jpg'); */
+  
+}
+
+body {
+  /* background-image: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm21-background-tong-058.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=710a6fed5b1923da8d5f95191839ef8a'); */
+  background-image: url('https://image.freepik.com/free-vector/geometric-medical-concept-white-background_88211-251.jpg');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+
 }
 
 .App-logo {
@@ -15,7 +32,6 @@
 }
 
 .App-header {
-  /* background-color: #ff7d71; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -133,6 +149,7 @@
   width: 219px;
   position: absolute;
   top: 69px;
+  z-index: 1;
   left: 171px;
   transform: skew(-2deg, -2deg);
 }
@@ -146,10 +163,11 @@
   transform: skew(-2deg, -3deg);
 }
 .position-pink-cardi {
-  height: 301px;
+  height: 288px;
+  width: 218px;
   position: absolute;
-  top: 65px;
-  left: 188px;
+  top: 79px;
+  left: 171px;
   z-index: 1;
   transform: skew(-2deg, -2deg);
 }
@@ -416,6 +434,46 @@
   transform: skew(-3deg, -3deg);
 }
 
+.position-shirt-dress {
+  height: 101%;
+  width: 450px;
+  position: absolute;
+  top: -57px;
+  left: 92px;
+  transform: skew(1deg, -4deg);
+}
+.position-pink-gown{
+  height: 99%;
+  width: 563px;
+  position: absolute;
+  top: 64px;
+  left: -14px;
+  transform: skew(-2deg, -4deg);
+}
+.position-organza-gown{
+  height: 110%;
+  width: 422px;
+  position: absolute;
+  top: -35px;
+  left: 63px;
+  transform: skew(0deg, 3deg);
+}
+.position-blazer-set{
+  height: 101%;
+  width: 450px;
+  position: absolute;
+  top: -57px;
+  left: 92px;
+  transform: skew(1deg, -4deg);
+}
+.position-plaid-set{
+  height: 68%;
+  width: 209px;
+  position: absolute;
+  top: -12px;
+  left: 179px;
+  transform: skew(2deg, -5deg);
+}
 
 
 .profile-page {
@@ -427,6 +485,6 @@
 }
 
 .outfit-cards {
-  display: inline-flex;
+  /* display: inline-flex; */
   /* height: 20rem; */
 }

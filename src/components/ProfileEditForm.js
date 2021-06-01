@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 function ProfileEditForm( {userId,
     onClose,
     userName,
+    userModel,
     userUsername,
     userAge,
     userGender,
@@ -25,23 +26,31 @@ function ProfileEditForm( {userId,
     userImage,
     setUsers} ) {
     const classes = useStyles()
-    const [model_id] = useState('1')
-    const [name, setName] = useState(userName)
-    const [username, setUsername] = useState(userUsername)
+    const history = useHistory()
+    // const [model_id] = useState('1')
     const [age, setAge] = useState(userAge)
+    const [name, setName] = useState(userName)
     const [image, setImage] = useState(userImage)
-    const [password, setPassword] = useState(userPassword)
     const [gender, setGender] = useState(userGender)
+    const [model_id, setModel_id] = useState(userModel)
+    const [username, setUsername] = useState(userUsername)
+    const [password, setPassword] = useState(userPassword)
+    const handleGenderChange = (e) => { setGender(e.target.value) }
+    const handleModelChange = (e) => { setModel_id(e.target.value) }
     
     const genderOptions = [
         { value: 'f', label: 'Female' },
         { value: 'm', label: 'Male' },
         { value: 'nb', label: 'Non-Binary' }
     ]
+    
+    const modelOptions = [
+        { value: '1', label: 'Deep Tone' },
+        { value: '2', label: 'Olive Tone' },
+        { value: '3', label: 'Pale Tone' },
+    ]
 
-    const history = useHistory()
-    const handleGenderChange = (e) => { setGender(e.target.value) }
-
+console.log(userId)
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -54,7 +63,7 @@ function ProfileEditForm( {userId,
             username,
             model_id
         }
-        fetch(`http://localhost:3000/users/2`, {
+        fetch(`http://localhost:3000/users/${userId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,6 +73,7 @@ function ProfileEditForm( {userId,
         })
             .then(r => r.json())
             .then(updatedUserObj => {
+                console.log(updatedUserObj)
                 setUsers(updatedUserObj)
                 history.push('/myprofile')
             })
@@ -128,6 +138,22 @@ function ProfileEditForm( {userId,
                         helperText="Please select a gender."
                         variant="outlined">
                         {genderOptions.map((option) => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </TextField>
+                </div>
+                <div>
+                    <TextField id="model_id"
+                        label="Model"
+                        select
+                        value={model_id}
+                        onChange={handleModelChange}
+                        SelectProps={{ native: true, }}
+                        helperText="Please select a gender."
+                        variant="outlined">
+                        {modelOptions.map((option) => (
                             <option key={option.value} value={option.value}>
                                 {option.label}
                             </option>

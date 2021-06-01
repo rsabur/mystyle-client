@@ -112,18 +112,18 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path='/'>
-          <img src={Logo} alt="logo" style={{ width: '100%', height: "27rem" }} />
+          <img src={Logo} alt="logo" style={{ width: '100%', height: "27rem", filter: 'contrast(129%)' }} />
           <LandingPage models={models} users={users} setUsers={setUsers} />
         </Route>
         <Route exact path='/myprofile'>
-          <img src={Logo3} alt="logo" style={{ width: '100%' }} />
+          <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)' }} />
           <AppMenu />
           <div className="profile-comp">
             <ProfilePage user={users} models={models} setUsers={setUsers} />
           </div>
         </Route>
         <Route exact path='/myoutfits'>
-          <img src={Logo3} alt="logo" style={{ width: '100%' }} />
+          <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)' }} />
           <AppMenu />
           <OutfitContainer users={users} models={models}
             clothings={clothings} outfits={outfits}
@@ -132,7 +132,7 @@ function App() {
         </Route>
         <Route exact path='/mycloset'>
           <div className="Closet">
-            <img src={Logo3} alt="logo" style={{ width: '100%' }} />
+            <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)' }} />
             <AppMenu />
             <ClosetContainer onAddClothing={handleAddClothing}
               onDeleteClothing={deleteClothing}

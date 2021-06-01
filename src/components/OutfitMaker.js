@@ -1,5 +1,10 @@
-function OutfitMaker({ models, top, bottom, dress }) {
-    const model = models.map(model => model)
+function OutfitMaker({ models, top, bottom, dress, users }) {
+    const model = models.find(model => {
+        if(users.model_id === model.id){
+            return model.image
+        }
+    })
+    console.log(model);
 
     const dressClassName = (name) => {
         if (name === 'Tropical Dress') {
@@ -28,6 +33,18 @@ function OutfitMaker({ models, top, bottom, dress }) {
             return 'position-puffsleeve-dress'
         } else if (name === 'Blue Mini Dress') {
             return 'position-blue-mini'
+        } else if (name === 'Blue Shirt Dress') {
+            return 'position-shirt-dress'
+        } else if (name === 'Pink Gown') {
+            return 'position-pink-gown'
+        } else if (name === 'Organza Gown') {
+            return 'position-organza-gown'
+        } else if (name === 'Blazer Set') {
+            return 'position-blazer-set'
+        } else if (name === 'Plaid Set') {
+            return 'position-plaid-set'
+        } else if (name === 'Black Tulle') {
+            return 'position-black-tulle'
         }
     }
 
@@ -105,7 +122,7 @@ function OutfitMaker({ models, top, bottom, dress }) {
                 alt={bottom.name} />
             <img className={dressClassName(dress.name)} src={dress.image}
                 alt={dress.name} />
-            <img src={model[0].image} alt={model[0].color}
+            <img src={model.image} alt={model.color}
                 style={{ height: "44rem" }} />
         </div>
     )

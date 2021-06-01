@@ -1,13 +1,12 @@
-import ClothingItem from './ClothingItem'
-import OutfitMaker from './OutfitMaker'
-import Grid from '@material-ui/core/Grid'
 import { useState } from 'react'
+import OutfitMaker from './OutfitMaker'
+import ClothingItem from './ClothingItem'
+import Grid from '@material-ui/core/Grid'
 
 
 function ClosetContainer({ clothings, users,
     models, setSearchTerm, onDeleteClothing,
-    onAddClothing, onAddOutfitClothings,
-    onAddOutfits, outfits }) {
+    onAddClothing, onAddOutfits }) {
     const [userId] = useState(1)
     const [top, setTop] = useState('')
     const [name] = useState('Untitled')
