@@ -46,16 +46,14 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-function SearchBar({ setSearchTerm }) {
+function SearchBar({ setSearchTerm, searchTerm }) {
     const classes = useStyles()
-    const [search, setSearch] = useState('')
 
-    function handleSubmit() {
-        console.log("Submitted")
-        setSearch(setSearchTerm)
+    function handleSubmit(e) {
+        setSearchTerm(e.target.value)
     }
     return (
-        <Form inline onChange={handleSubmit}>
+        <Form inline >
             <div className={classes.search}>
                 <div className={classes.searchIcon}>
                     <SearchIcon />
@@ -66,7 +64,8 @@ function SearchBar({ setSearchTerm }) {
                         root: classes.inputRoot,
                         input: classes.inputInput,
                     }}
-                    value={search}
+                    value={searchTerm}
+                    onChange={handleSubmit}
                     inputProps={{ 'aria-label': 'search' }}
                 />
             </div>

@@ -2,7 +2,7 @@ import ProfileCard from './ProfileCard'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import Paper from '@material-ui/core/Paper'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import CardMedia from '@material-ui/core/CardMedia'
 import { makeStyles } from '@material-ui/core/styles'
@@ -32,10 +32,10 @@ const useStyles = makeStyles((theme) => ({
 function ProfilePage({ user, models, setUsers }) {
     const classes = useStyles()
     const history = useHistory()
-    const handleGetDressed = () => { history.push('/mycloset')}
-    
+    const handleGetDressed = () => { history.push('/mycloset') }
+
     const model = models.find(model => {
-        if(user.model_id === model.id){
+        if (user.model_id === model.id) {
             return model
         } else {
             return ''
@@ -79,10 +79,10 @@ function ProfilePage({ user, models, setUsers }) {
                             <Button
                                 variant="contained"
                                 size="small"
-                                color="primary"
+                                style={{ backgroundColor: "#880e4f", color: 'white' }}
                                 onClick={handleGetDressed}
-                                // style={{ marginLeft: '9rem' }} 
-                                >
+                            // style={{ marginLeft: '9rem' }} 
+                            >
                                 Get Dressed</Button>
                         </CardActions>
                     </Card>

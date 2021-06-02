@@ -75,6 +75,8 @@ function App() {
 
   const filteredClothings = clothings.filter(clothing => {
     return clothing.name.toLowerCase().includes(searchTerm.toLowerCase())
+    console.log(clothing.name)
+    console.log(searchTerm)
   })
 
   const handleAddClothing = (newClothing) => {
@@ -91,7 +93,7 @@ function App() {
     const newOutfitClothingsArr = [newOutfitClothing, ...outfitClothings]
     setOutfitClothings(newOutfitClothingsArr)
   }
-  
+
   const deleteClothing = (clothingId) => {
     const minusClothing = clothings.filter(clothing => clothing.id !== clothingId)
     setClothings(minusClothing)
@@ -122,7 +124,7 @@ function App() {
             <ProfilePage user={users} models={models} setUsers={setUsers} />
           </div>
         </Route>
-        <Route exact path='/myoutfits'>
+        <Route exact path='/myoutfits' >
           <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)' }} />
           <AppMenu />
           <OutfitContainer users={users} models={models}
@@ -135,6 +137,7 @@ function App() {
             <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)' }} />
             <AppMenu />
             <ClosetContainer onAddClothing={handleAddClothing}
+              searchTerm={searchTerm}
               onDeleteClothing={deleteClothing}
               clothings={filteredClothings}
               users={users} models={models}

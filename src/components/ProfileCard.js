@@ -102,7 +102,8 @@ console.log(user.id);
                     <Button onClick={handleDeleteProfile}
                         size="small"
                         variant="contained"
-                        color="secondary"
+                        style={{color:"#d50000"}}
+                        color="#d50000"
                         className={classes2.button}
                         startIcon={<DeleteIcon />}>
                         Delete

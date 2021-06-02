@@ -62,7 +62,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 65rem;
+  height: 62rem;
 }
 
 /* .main-container {
@@ -83,8 +83,8 @@ body {
 
 .clothing-item {
   position: relative;
-  left: 3rem;
-  width: 80%;
+  left: 0rem;
+  width: 89%;
 }
 .profile-comp {
 /* margin-top: 2rem; */
@@ -478,7 +478,10 @@ body {
 
 .profile-page {
   display: inline-flex;
+  /* margin-top: 5rem; */
+  /* position: absolute; */
 }
+
 
 .makeStyles-root-1 {
   margin-bottom: 1rem;
@@ -487,4 +490,9 @@ body {
 .outfit-cards {
   /* display: inline-flex; */
   /* height: 20rem; */
+}
+
+.menu {
+  position: absolute;
+  z-index: 1;
 }

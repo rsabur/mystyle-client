@@ -6,7 +6,8 @@ import Grid from '@material-ui/core/Grid'
 
 function ClosetContainer({ clothings, users,
     models, setSearchTerm, onDeleteClothing,
-    onAddClothing, onAddOutfits }) {
+    onAddClothing, onAddOutfits,
+    searchTerm }) {
     const [userId] = useState(1)
     const [top, setTop] = useState('')
     const [name] = useState('Untitled')
@@ -124,7 +125,7 @@ function ClosetContainer({ clothings, users,
     }
 
 
-    const handleClothingSelect = (id, category, image, name, gender, size) => {
+    const handleClothingSelect = (id, category, image, name, gender, size, searchTerm) => {
         if (category === 'top') {
             setTop({ id, category, image, name, gender, size })
         } else if (category === 'bottom') {
@@ -151,7 +152,7 @@ function ClosetContainer({ clothings, users,
                         users={users} models={models} />
                 </Grid>
                 <Grid item xs={6}>
-                    <ClothingItem onHandleReset={handleReset}
+                    <ClothingItem searchTerm={searchTerm} onHandleReset={handleReset}
                         handleClothingSelect={handleClothingSelect}
                         onAddClothing={onAddClothing}
                         onDeleteClothing={onDeleteClothing}

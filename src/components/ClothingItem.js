@@ -74,6 +74,7 @@ function ClothingItem({ clothingTop,
     setSearchTerm,
     onDeleteClothing,
     onAddClothing,
+    searchTerm,
     handleClothingSelect }) {
     const classes1 = useStyles1()
     const classes2 = useStyles2()
@@ -103,7 +104,7 @@ function ClothingItem({ clothingTop,
             <Card className={classes1.root2} variant="outlined">
                 <div className="search">
                     <br />
-                    <SearchBar setSearchTerm={setSearchTerm} />
+                    <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} />
                 </div>
                 <div className={classes1.root}>
                     <GridList className={classes1.gridList} cols={4} >
@@ -118,11 +119,11 @@ function ClothingItem({ clothingTop,
                                     }}
                                     actionIcon={
                                         <IconButton aria-label={`star ${top.name}`}>
-                                            {fav ?
+                                            {/* {fav ?
                                                 <StarIcon className={classes1.title} onClick={handleFavClick} />
                                                 :
-                                                <StarBorderIcon className={classes1.title} onClick={handleFavClick} />}
-                                            <DeleteIcon size='small' onClick={() => handleDelete(top.id)} />
+                                                <StarBorderIcon className={classes1.title} onClick={handleFavClick} />} */}
+                                            <DeleteIcon style={{ color:'#b71c1c' }} size='small' onClick={() => handleDelete(top.id)} />
                                         </IconButton>} />
                             </GridListTile>
                         ))}
@@ -141,11 +142,11 @@ function ClothingItem({ clothingTop,
                                     }}
                                     actionIcon={
                                         <IconButton aria-label={`star ${bottom.name}`}>
-                                            {fav ?
+                                            {/* {fav ?
                                                 <StarIcon className={classes1.title} onClick={handleFavClick} />
                                                 :
-                                                <StarBorderIcon className={classes1.title} onClick={handleFavClick} />}
-                                            <DeleteIcon size='small' onClick={() => handleDelete(bottom.id)} />
+                                                <StarBorderIcon className={classes1.title} onClick={handleFavClick} />} */}
+                                            <DeleteIcon style={{ color:'#b71c1c' }} size='small' onClick={() => handleDelete(bottom.id)} />
                                         </IconButton>} />
                             </GridListTile>
                         ))}
@@ -164,11 +165,11 @@ function ClothingItem({ clothingTop,
                                     }}
                                     actionIcon={
                                         <IconButton aria-label={`star ${dress.name}`}>
-                                            {fav ?
+                                            {/* {fav ?
                                                 <StarIcon className={classes1.title} onClick={handleFavClick} />
                                                 :
-                                                <StarBorderIcon className={classes1.title} onClick={handleFavClick} />}
-                                            <DeleteIcon size='small' onClick={() => handleDelete(dress.id)} />
+                                                <StarBorderIcon className={classes1.title} onClick={handleFavClick} />} */}
+                                            <DeleteIcon style={{ color:'#b71c1c' }} size='small' onClick={() => handleDelete(dress.id)} />
                                         </IconButton>} />
                             </GridListTile>
                         ))}
@@ -185,6 +186,7 @@ function ClothingItem({ clothingTop,
                     type="button"
                     variant="contained"
                     color="primary"
+                    style={{marginLeft: '30px'}}
                     onClick={() => { onCreateOutfit(); handleOpen2() }}>
                     Create Outfit </Button>
                 <Modal
@@ -214,7 +216,7 @@ function ClothingItem({ clothingTop,
                 <Button
                     type="button"
                     variant="contained"
-                    color="secondary"
+                    style={{ backgroundColor: "#b71c1c", color:'gainsboro' }}
                     onClick={onHandleReset}>
                     Reset Outfit </Button>
                 <Modal
