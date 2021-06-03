@@ -1,9 +1,12 @@
-import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import { Planet } from 'react-planet'
 import MenuPic from '../menu-pic.png'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 // import Menu from '@material-ui/core/Menu'
+import { useHistory } from 'react-router-dom'
 // import Button from '@material-ui/core/Button'
+import Container from 'react-bootstrap/Container'
 // import MenuItem from '@material-ui/core/MenuItem'
 import AccountCircleSharpIcon from '@material-ui/icons/AccountCircleSharp';
 import AccessibilitySharpIcon from '@material-ui/icons/AccessibilitySharp';
@@ -20,77 +23,92 @@ function AppMenu() {
   }
 
   // const handleClose = () => { setAnchorEl(null) }
-  const showProfilePage = () => { history.push('/myprofile') }
+  const handleLogout = () => { history.push('/') }
   const showCloset = () => { history.push('/mycloset') }
   const showOutfits = () => { history.push('/myoutfits') }
-  const handleLogout = () => { history.push('/') }
+  const showProfilePage = () => { history.push('/myprofile') }
 
   return (
     <div className="menu" >
-      <Planet
-        centerContent={<MenuSharpIcon style={{
-					height: 50,
-          margin: 10,
-					width: 50,
-					borderRadius: '50%',
-					backgroundImage: `url(${MenuPic})`,
-          color: 'gainsboro'
-				}} />}
-        hideOrbit
-        autoClose
-        orbitRadius={70}
-        bounceOnClose
-        rotation={168}
-        friction={19}
-        // the bounce direction is minimal visible
-        // but on close it seems the button wobbling a bit to the bottom
-        bounceDirection="BOTTOM"
-      >
-        <AccountCircleSharpIcon 
-        color='primary'
-        onClick={showProfilePage}
-        style={{
-					height: 37,
-          color: '#ef9a9a',
-					width: 37,
-					borderRadius: '50%',
-					backgroundColor: 'gainsboro',
-          text: 'P'
-				}} />
-        <MeetingRoomSharpIcon 
-        color='primary'
-        onClick={showCloset}
-        style={{
-          color: '#ef9a9a',
-					height: 37,
-					width: 37,
-					borderRadius: '50%',
-					backgroundColor: 'gainsboro',
-				}} />
-        <AccessibilitySharpIcon 
-        color='primary'
-        onClick={showOutfits}
-        style={{
-          color: '#ef9a9a',
-					height: 37,
-					width: 37,
-					borderRadius: '50%',
-					backgroundColor: 'gainsboro',
-				}} />
-        <ExitToAppSharpIcon
-        // color='primary'
-        onClick={handleLogout}
-        style={{
-          color: '#ef9a9a',
-					height: 37,
-					width: 37,
-					borderRadius: '50%',
-					backgroundColor: 'gainsboro',
-				}} />
-        <div />
-        <div />
-        <div />
-      </Planet>
+      <Container fluid id="app-menu-main-container">
+        <Row id='nav-row'>
+          <Col id='nav-col'>
+            <Planet
+              centerContent={<MenuSharpIcon style={{
+                height: 50,
+                marginRight: 0,
+                margin: 10,
+                width: 50,
+                // position: 'relative',
+                filter: 'contrast(129%)',
+                borderRadius: '50%',
+                backgroundImage: `url(${MenuPic})`,
+                color: 'gainsboro'
+              }} />}
+              hideOrbit
+              autoClose
+              orbitRadius={70}
+              bounceOnClose
+              rotation={168}
+              friction={19}
+              // the bounce direction is minimal visible
+              // but on close it seems the button wobbling a bit to the bottom
+              bounceDirection="BOTTOM"
+            >
+              <AccountCircleSharpIcon
+                color='primary'
+                onClick={showProfilePage}
+                style={{
+                  height: 37,
+                  color: '#ef9a9a',
+                  width: 37,
+                  borderRadius: '50%',
+                  backgroundColor: 'gainsboro',
+                  text: 'P'
+                }} />
+              <MeetingRoomSharpIcon
+                color='primary'
+                onClick={showCloset}
+                style={{
+                  color: '#ef9a9a',
+                  height: 37,
+                  width: 37,
+                  borderRadius: '50%',
+                  backgroundColor: 'gainsboro',
+                }} />
+              <AccessibilitySharpIcon
+                color='primary'
+                onClick={showOutfits}
+                style={{
+                  color: '#ef9a9a',
+                  height: 37,
+                  width: 37,
+                  borderRadius: '50%',
+                  backgroundColor: 'gainsboro',
+                }} />
+              <ExitToAppSharpIcon
+                // color='primary'
+                onClick={handleLogout}
+                style={{
+                  color: '#ef9a9a',
+                  height: 37,
+                  width: 37,
+                  borderRadius: '50%',
+                  backgroundColor: 'gainsboro',
+                }} />
+              <div />
+              <div />
+              <div />
+            </Planet>
+          </Col>
+        </Row>
+      </Container>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
+
 
 
       {/* <img src={MenuPic} alt="logo"

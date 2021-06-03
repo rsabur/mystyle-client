@@ -87,7 +87,9 @@ body {
   width: 89%;
 }
 .profile-comp {
-/* margin-top: 2rem; */
+margin-top: 5rem;
+z-index: -1;
+position: absolute;
 }
 
 .position-blue-top {
@@ -478,6 +480,7 @@ body {
 
 .profile-page {
   display: inline-flex;
+  /* z-index: 1; */
   /* margin-top: 5rem; */
   /* position: absolute; */
 }
@@ -487,12 +490,15 @@ body {
   margin-bottom: 1rem;
 }
 
-.outfit-cards {
-  /* display: inline-flex; */
-  /* height: 20rem; */
+.menu {
+  /* position: absolute; */
+  /* z-index: 3; */
+  /* position: fixed; */
+  width: 100%;
+
 }
 
-.menu {
-  position: absolute;
-  z-index: 1;
+.closet-container {
+  /* margin-top: 5rem; */
+  /* position: fixed; */
 }

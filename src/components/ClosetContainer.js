@@ -58,8 +58,9 @@ function ClosetContainer({ clothings, users,
                     })
                         .then(r => r.json())
                         .then(outfitClothingObj => {
-                            onAddOutfits(outfitObj.outfit_clothings.push(outfitClothingObj))
-                            onAddOutfits(outfitObj.clothings.push(top))
+                            outfitObj.outfit_clothings.push(outfitClothingObj)
+                            outfitObj.clothings.push(top)
+                            onAddOutfits(outfitObj)
                         })
                         .then(() => {
                             const secondClothingsData = {
@@ -76,8 +77,11 @@ function ClosetContainer({ clothings, users,
                             })
                                 .then(r => r.json())
                                 .then(outfitClothingObj => {
-                                    onAddOutfits(outfitObj.outfit_clothings.push(outfitClothingObj))
-                                    onAddOutfits(outfitObj.clothings.push(bottom))
+                                    outfitObj.outfit_clothings.push(outfitClothingObj)
+                                    outfitObj.clothings.push(bottom)
+                                    onAddOutfits(outfitObj)
+                                    console.log(outfitClothingObj)
+                                    console.log(outfitObj)
                                 })
                         })
                 })
@@ -114,8 +118,9 @@ function ClosetContainer({ clothings, users,
                     })
                         .then(r => r.json())
                         .then(outfitClothingObj => {
-                            onAddOutfits(outfitObj.outfit_clothings.push(outfitClothingObj))
-                            onAddOutfits(outfitObj.clothings.push(dress))
+                            outfitObj.outfit_clothings.push(outfitClothingObj)
+                            outfitObj.clothings.push(dress)
+                            onAddOutfits(outfitObj)
                         })
                 })
 

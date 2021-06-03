@@ -87,7 +87,9 @@ function App() {
   const handleAddOutfit = (newOutfit) => {
     const newOutfitsArr = [newOutfit, ...outfits]
     setOutfits(newOutfitsArr)
+    console.log(newOutfitsArr)
   }
+  console.log(outfits)
 
   const handleAddOutfitClothing = (newOutfitClothing) => {
     const newOutfitClothingsArr = [newOutfitClothing, ...outfitClothings]
@@ -114,18 +116,18 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path='/'>
-          <img src={Logo} alt="logo" style={{ width: '100%', height: "27rem", filter: 'contrast(129%)' }} />
+          <img src={Logo} alt="logo" style={{ width: '100%', height: "27rem", filter: 'contrast(129%)', boxShadow: '0px 14px 5px #ccc'  }} />
           <LandingPage models={models} users={users} setUsers={setUsers} />
         </Route>
         <Route exact path='/myprofile'>
-          <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)' }} />
+          <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)', boxShadow: '0px 14px 5px #ccc'  }} />
           <AppMenu />
           <div className="profile-comp">
             <ProfilePage user={users} models={models} setUsers={setUsers} />
           </div>
         </Route>
         <Route exact path='/myoutfits' >
-          <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)' }} />
+          <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)', boxShadow: '10px 10px 5px #ccc', boxShadow: '0px 14px 5px #ccc'  }} />
           <AppMenu />
           <OutfitContainer users={users} models={models}
             clothings={clothings} outfits={outfits}
@@ -134,7 +136,7 @@ function App() {
         </Route>
         <Route exact path='/mycloset'>
           <div className="Closet">
-            <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)' }} />
+            <img src={Logo3} alt="logo" style={{ width: '100%', filter: 'contrast(129%)', boxShadow: '0px 14px 5px #ccc'  }} />
             <AppMenu />
             <ClosetContainer onAddClothing={handleAddClothing}
               searchTerm={searchTerm}

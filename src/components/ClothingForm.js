@@ -67,7 +67,7 @@ function ClothingForm({ onAddClothing, onClose }) {
                 onAddClothing(clothing)
                 history.push('/mycloset')
                 setName('')
-                setGender('')
+                setGender('f')
                 setSize('')
                 setImage('')
                 setSize('s')
