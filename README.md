@@ -22,6 +22,10 @@ ________________________________________________________________________________
 * Users can update the name of their created outfits and/or delete them 
 * On a profile page, users can edit and delete their profile
 * On a profile page, users can view their model
+
+## Start App
+### npm start
+### rails s
 _______________________________________________________________________________________
 
 ## Demo
