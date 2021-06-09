@@ -25,10 +25,10 @@ ________________________________________________________________________________
 
 ## Start App
 Start MyStyle's frontend using:
-### npm start
+* npm start
 
 Start MyStyle's server using:
-### rails s
+* rails s
 _______________________________________________________________________________________
 
 ## Demo
