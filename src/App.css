@@ -82,6 +82,7 @@ body {
 }
 
 .clothing-item {
+  margin-top: 5rem;
   position: relative;
   left: 0rem;
   width: 89%;
@@ -493,7 +494,7 @@ position: absolute;
 .menu {
   /* position: absolute; */
   /* z-index: 3; */
-  /* position: fixed; */
+  position: fixed;
   width: 100%;
 
 }

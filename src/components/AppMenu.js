@@ -39,7 +39,7 @@ function AppMenu() {
                 marginRight: 0,
                 margin: 10,
                 width: 50,
-                // position: 'relative',
+                position: 'relative',
                 filter: 'contrast(129%)',
                 borderRadius: '50%',
                 backgroundImage: `url(${MenuPic})`,

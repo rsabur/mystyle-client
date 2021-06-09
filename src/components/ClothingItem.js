@@ -30,7 +30,7 @@ const useStyles1 = makeStyles((theme) => ({
 
     root2: {
         // backgroundImage: "url('https://eef96b699a090652d417-4cb4fb1426f507672e7f99f3dfb91794.ssl.cf1.rackcdn.com/6878726.jpg')",
-        opacity: '0.9',
+        // opacity: '1',
         borderRadius: "8%",
         border: '3px solid rgba(255,255,255,0.4)',
     },

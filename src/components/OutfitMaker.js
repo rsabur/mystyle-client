@@ -4,7 +4,6 @@ function OutfitMaker({ models, top, bottom, dress, users }) {
             return model.image
         }
     })
-    console.log(model);
 
     const dressClassName = (name) => {
         if (name === 'Tropical Dress') {

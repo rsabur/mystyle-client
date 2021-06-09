@@ -40,7 +40,6 @@ function ProfileCard({ user, setUsers }) {
     const classes2 = useStyles2()
     const [open, setOpen] = useState(false)
     
-console.log(user.id);
     const handleOpen = () => { setOpen(true) }
     const handleClose = () => { setOpen(false) }
     const handleDeleteProfile = () => {

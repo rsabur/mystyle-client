@@ -50,7 +50,6 @@ function ProfileEditForm( {userId,
         { value: '3', label: 'Pale Tone' },
     ]
 
-console.log(userId)
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -73,7 +72,6 @@ console.log(userId)
         })
             .then(r => r.json())
             .then(updatedUserObj => {
-                console.log(updatedUserObj)
                 setUsers(updatedUserObj)
                 history.push('/myprofile')
             })

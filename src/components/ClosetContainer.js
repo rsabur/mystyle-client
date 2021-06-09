@@ -80,8 +80,6 @@ function ClosetContainer({ clothings, users,
                                     outfitObj.outfit_clothings.push(outfitClothingObj)
                                     outfitObj.clothings.push(bottom)
                                     onAddOutfits(outfitObj)
-                                    console.log(outfitClothingObj)
-                                    console.log(outfitObj)
                                 })
                         })
                 })
@@ -101,7 +99,6 @@ function ClosetContainer({ clothings, users,
             })
                 .then(r => r.json())
                 .then(outfitObj => {
-                    console.log(outfitObj)
                     const outfitId = outfitObj.id
 
                     const outfitClothingsData = {

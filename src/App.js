@@ -75,8 +75,6 @@ function App() {
 
   const filteredClothings = clothings.filter(clothing => {
     return clothing.name.toLowerCase().includes(searchTerm.toLowerCase())
-    console.log(clothing.name)
-    console.log(searchTerm)
   })
 
   const handleAddClothing = (newClothing) => {
@@ -87,9 +85,7 @@ function App() {
   const handleAddOutfit = (newOutfit) => {
     const newOutfitsArr = [newOutfit, ...outfits]
     setOutfits(newOutfitsArr)
-    console.log(newOutfitsArr)
   }
-  console.log(outfits)
 
   const handleAddOutfitClothing = (newOutfitClothing) => {
     const newOutfitClothingsArr = [newOutfitClothing, ...outfitClothings]

@@ -73,13 +73,11 @@ function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
             method: 'DELETE'
         })
         onDeleteOutfit(id)
-        console.log(id)
         history.push('/myoutfits')
     }
 
     const handleRenderImage = () => {
         if (outfitImages.length > 1) {
-            console.log(outfitImages[0])
             return (
                 <>
                     <CardMedia
@@ -89,7 +87,6 @@ function Outfits({ name, id, items, onDeleteOutfit, onEditOutfit }) {
                         // height="200"
                         style={{ marginBottom: '-13rem' }}
                         image={outfitImages[0]} />
-                    {/* {console.log(outfitImages[0])} */}
                     <CardMedia
                         className='outfit-format'
                         component="img"
