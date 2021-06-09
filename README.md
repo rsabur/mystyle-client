@@ -24,7 +24,10 @@ ________________________________________________________________________________
 * On a profile page, users can view their model
 
 ## Start App
+Start MyStyle's frontend using:
 ### npm start
+
+Start MyStyle's server using:
 ### rails s
 _______________________________________________________________________________________
 
